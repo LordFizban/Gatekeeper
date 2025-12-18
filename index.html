@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>The Iron Gatekeeper v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <main class="container">
+        <header>
+            <h1>Story<span class="gradient-text" data-i18n="titleSuffix">Gatekeeper v2</span></h1>
+            <div class="controls-row">
+                <select id="lang-select" class="lang-selector">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="tr">🇹🇷 Türkçe</option>
+                </select>
+            </div>
+            <p class="subtitle" data-i18n="subtitle">The Iron Gatekeeper: Strict Definition of Ready (DoR) Validation.
+            </p>
+        </header>
+
+        <div class="app-layout">
+            <!-- Left Column: Input -->
+            <section class="input-section glass-panel">
+                <div class="input-group">
+                    <label for="story-title" data-i18n="labelTitle">Story Title</label>
+                    <input type="text" id="story-title" data-i18n-placeholder="phTitle"
+                        placeholder="e.g., User Login with Google Auth">
+                </div>
+
+                <div class="input-group">
+                    <label for="story-content">
+                        <span data-i18n="labelContent">Story Definition</span>
+                        <br>
+                        <span class="sub-label" data-i18n="labelAC">(Must include: So that, ACs, Dependencies,
+                            Estimation, Evidence)</span>
+                    </label>
+                    <textarea id="story-content" data-i18n-placeholder="phContent"
+                        placeholder="As a... So that...&#10;&#10;Acceptance Criteria:&#10;- item&#10;&#10;Dependencies:&#10;- https://...&#10;&#10;Estimation:&#10;- 3 pts&#10;&#10;Evidence:&#10;- Figma link"></textarea>
+                    <div class="hint-text" data-i18n="hintACFormat">Format ACs with dashes ( - ) or numbers ( 1. ).
+                    </div>
+                </div>
+
+                <!-- Manual Ritual Checks -->
+                <div class="ritual-checks">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="check-refinement">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-label" id="label-refinement" data-i18n="checkRefinement">Refinement
+                            Aligned?</span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="check-alignment">
+                        <span class="checkmark"></span>
+                        <span class="checkbox-label" id="label-alignment" data-i18n="checkAlignment">Dependent Team
+                            Aligned?</span>
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <button id="analyze-btn" class="primary-btn" data-i18n="btnAnalyze">Verify Seals</button>
+                    <button id="load-btn" class="secondary-btn" data-i18n="btnDemo">Load Perfect Story</button>
+                    <button id="clear-btn" class="secondary-btn" data-i18n="btnClear">Clear</button>
+                </div>
+
+                <div class="criteria-reference">
+                    <h3 data-i18n="headerCriteria">The 6 Seals</h3>
+                    <div class="criteria-grid compact">
+                        <div class="criteria-card">
+                            <div class="icon">🆔</div>
+                            <div class="text">
+                                <h4 data-i18n="refSeal0Title">Identity</h4>
+                                <p data-i18n="refSeal0Desc">Title</p>
+                            </div>
+                        </div>
+                        <div class="criteria-card">
+                            <div class="icon">💎</div>
+                            <div class="text">
+                                <h4 data-i18n="refSeal1Title">Value</h4>
+                                <p data-i18n="refSeal1Desc">So that...</p>
+                            </div>
+                        </div>
+                        <div class="criteria-card">
+                            <div class="icon">⚔️</div>
+                            <div class="text">
+                                <h4 data-i18n="refSeal2Title">Victory</h4>
+                                <p data-i18n="refSeal2Desc">3+ ACs</p>
+                            </div>
+                        </div>
+                        <div class="criteria-card">
+                            <div class="icon">⛰️</div>
+                            <div class="text">
+                                <h4 data-i18n="refSeal3Title">Terrain</h4>
+                                <p data-i18n="refSeal3Desc">Links</p>
+                            </div>
+                        </div>
+                        <div class="criteria-card">
+                            <div class="icon">💰</div>
+                            <div class="text">
+                                <h4 data-i18n="refSeal4Title">Cost</h4>
+                                <p data-i18n="refSeal4Desc">Points</p>
+                            </div>
+                        </div>
+                        <div class="criteria-card">
+                            <div class="icon">📜</div>
+                            <div class="text">
+                                <h4 data-i18n="refSeal5Title">Evidence</h4>
+                                <p data-i18n="refSeal5Desc">Docs/Figma</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Results -->
+            <section class="results-section glass-panel hidden" id="results-panel">
+                <div class="results-header"
+                    style="display:flex; justify-content:flex-end; width:100%; margin-bottom:1rem;">
+                    <button id="copy-jira-btn" class="secondary-btn small-btn" data-i18n="btnJira">Copy to Jira
+                        📋</button>
+                </div>
+
+                <div class="stamp-container">
+                    <div id="digital-stamp" class="digital-stamp">
+                        <span class="stamp-text">READY FOR FORGE</span>
+                    </div>
+                </div>
+
+                <div class="feedback-list" id="feedback-list">
+                    <!-- Seal items injected here -->
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
