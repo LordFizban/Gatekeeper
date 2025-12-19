@@ -1,4 +1,5 @@
-# The Iron Gatekeeper v2 🛡️
+# The Iron Gatekeeper
+**Current Version:** v3.0 (Dual-Mode)
 
 **The Iron Gatekeeper** is a strict, client-side Definition of Ready (DoR) validation tool. It acts as a digital checkpoint for Agile teams, ensuring that no User Story enters the backlog or refinement without meeting a stringent set of criteria.
 

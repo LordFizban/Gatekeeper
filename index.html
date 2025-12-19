@@ -5,28 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>The Iron Gatekeeper v2</title>
+    <title>The Iron Gatekeeper</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="mode-gatekeeper">
     <div class="background-glow"></div>
 
     <main class="container">
         <header>
-            <h1>Story<span class="gradient-text" data-i18n="titleSuffix">Gatekeeper v2</span></h1>
+            <h1>Story <span class="gradient-text" data-i18n="titleSuffix_GK">Gatekeeper</span></h1>
+
             <div class="controls-row">
+                <!-- Mode Toggle -->
+                <div class="mode-toggle-container">
+                    <span id="mode-label-text" class="mode-label">🛡️ Power</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="mode-toggle-input">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
                 <select id="lang-select" class="lang-selector">
                     <option value="en">🇺🇸 English</option>
                     <option value="tr">🇹🇷 Türkçe</option>
                 </select>
             </div>
-            <p class="subtitle" data-i18n="subtitle">The Iron Gatekeeper: Strict Definition of Ready (DoR) Validation.
-            </p>
+
+            <p class="subtitle" data-i18n="subtitle">Dual-Mode Definition of Ready Validation.</p>
         </header>
 
         <div class="app-layout">
@@ -39,37 +48,30 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="story-content">
-                        <span data-i18n="labelContent">Story Definition</span>
-                        <br>
-                        <span class="sub-label" data-i18n="labelAC">(Must include: So that, ACs, Dependencies,
-                            Estimation, Evidence)</span>
-                    </label>
+                    <label for="story-content" data-i18n="labelContent">Story Definition</label>
+                    <div class="hint-text small-hint" data-i18n="labelAC">(Must include: So that, ACs, Dependencies,
+                        Estimation)</div>
                     <textarea id="story-content" data-i18n-placeholder="phContent"
-                        placeholder="As a... So that...&#10;&#10;Acceptance Criteria:&#10;- item&#10;&#10;Dependencies:&#10;- https://...&#10;&#10;Estimation:&#10;- 3 pts&#10;&#10;Evidence:&#10;- Figma link"></textarea>
-                    <div class="hint-text" data-i18n="hintACFormat">Format ACs with dashes ( - ) or numbers ( 1. ).
+                        placeholder="As a [role], I want to [action], so that [benefit]...&#10;&#10;Acceptance Criteria:&#10;- Criteria 1&#10;- Criteria 2&#10;&#10;Dependencies:&#10;- None&#10;&#10;Estimation:&#10;- 3 Points"></textarea>
+                </div>
+
+                <!-- Gatekeeper Rituals -->
+                <div class="ritual-checks input-group">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="check-refinement">
+                        <label for="check-refinement" id="label-refinement" data-i18n="checkRefinement">Refinement
+                            Aligned?</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="check-alignment">
+                        <label for="check-alignment" id="label-alignment" data-i18n="checkAlignment">Dependent Team
+                            Aligned?</label>
                     </div>
                 </div>
 
-                <!-- Manual Ritual Checks -->
-                <div class="ritual-checks">
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="check-refinement">
-                        <span class="checkmark"></span>
-                        <span class="checkbox-label" id="label-refinement" data-i18n="checkRefinement">Refinement
-                            Aligned?</span>
-                    </label>
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="check-alignment">
-                        <span class="checkmark"></span>
-                        <span class="checkbox-label" id="label-alignment" data-i18n="checkAlignment">Dependent Team
-                            Aligned?</span>
-                    </label>
-                </div>
-
                 <div class="actions">
-                    <button id="analyze-btn" class="primary-btn" data-i18n="btnAnalyze">Verify Seals</button>
-                    <button id="load-btn" class="secondary-btn" data-i18n="btnDemo">Load Perfect Story</button>
+                    <button id="analyze-btn" class="primary-btn" data-i18n="btnAnalyze">Analyze Story</button>
+                    <button id="load-btn" class="secondary-btn" data-i18n="btnDemo">Load Demo</button>
                     <button id="clear-btn" class="secondary-btn" data-i18n="btnClear">Clear</button>
                 </div>
 
@@ -98,7 +100,7 @@
                             </div>
                         </div>
                         <div class="criteria-card">
-                            <div class="icon">⛰️</div>
+                            <div class="icon">🗺️</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal3Title">Terrain</h4>
                                 <p data-i18n="refSeal3Desc">Links</p>
@@ -115,33 +117,67 @@
                             <div class="icon">📜</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal5Title">Evidence</h4>
-                                <p data-i18n="refSeal5Desc">Docs/Figma</p>
+                                <p data-i18n="refSeal5Desc">Arts/Docs</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Right Column: Results -->
-            <section class="results-section glass-panel hidden" id="results-panel">
-                <div class="results-header"
-                    style="display:flex; justify-content:flex-end; width:100%; margin-bottom:1rem;">
+            <!-- Right Column: Results Container -->
+            <div class="results-container-wrapper">
+
+                <!-- 1. Gatekeeper Panel -->
+                <section class="results-section glass-panel hidden" id="results-gatekeeper">
+                    <div class="stamp-wrapper">
+                        <div id="digital-stamp" class="digital-stamp">
+                            <div class="stamp-inner">
+                                <span class="stamp-text" data-i18n="stampPass">READY FOR FORGE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-list" id="gk-feedback-list">
+                        <!-- Seals Injected Here -->
+                    </div>
+                </section>
+
+                <!-- 2. Coach Panel -->
+                <section class="results-section glass-panel hidden" id="results-coach">
+                    <div class="score-container">
+                        <div class="score-circle">
+                            <svg class="progress-ring" width="160" height="160">
+                                <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)"
+                                    stroke-width="12" fill="transparent" r="70" cx="80" cy="80" />
+                                <circle class="progress-ring__circle" stroke="url(#gradient)" stroke-width="12"
+                                    fill="transparent" r="70" cx="80" cy="80" />
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#38bdf8" />
+                                        <stop offset="100%" stop-color="#c084fc" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="score-value">0</div>
+                            <div class="score-label" data-i18n="labelScore">DoR Score</div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-list" id="coach-feedback-list">
+                        <!-- Coach Feedback Injected Here -->
+                    </div>
+                </section>
+
+                <!-- Common Actions -->
+                <div style="margin-top: 1rem; text-align: center;">
                     <button id="copy-jira-btn" class="secondary-btn small-btn" data-i18n="btnJira">Copy to Jira
                         📋</button>
                 </div>
 
-                <div class="stamp-container">
-                    <div id="digital-stamp" class="digital-stamp">
-                        <span class="stamp-text">READY FOR FORGE</span>
-                    </div>
-                </div>
-
-                <div class="feedback-list" id="feedback-list">
-                    <!-- Seal items injected here -->
-                </div>
-            </section>
+            </div>
         </div>
     </main>
+
     <script src="script.js"></script>
 </body>
 
