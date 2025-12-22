@@ -1,4 +1,4 @@
-﻿# The Iron Gatekeeper
+# The Iron Gatekeeper
 **Current Version:** v3.1 (Persistence & Test Suite)
 
 **The Iron Gatekeeper** is a "Dr. Jekyll & Mr. Hyde" tool for Agile teams. It combines a strict **Enforcement Engine** (Gatekeeper) with a nuanced **Coaching Engine** (Story Coach) to support teams at every stage of maturity.
