@@ -1,4 +1,4 @@
-# The Iron Gatekeeper
+ï»¿# The Iron Gatekeeper
 **Current Version:** v3.1 (Persistence & Test Suite)
 
 **The Iron Gatekeeper** is a "Dr. Jekyll & Mr. Hyde" tool for Agile teams. It combines a strict **Enforcement Engine** (Gatekeeper) with a nuanced **Coaching Engine** (Story Coach) to support teams at every stage of maturity.
@@ -62,7 +62,7 @@ We believe that "one size fits all" tools fail because teams evolve.
 In **Power Mode**, the application enforces six strict mandatory criteria:
 
 1.  **Seal of Identity ??**: Title must be descriptive (>10 chars).
-2.  **Seal of Value ??**: Must contain a "So that" / "Böylece" clause.
+2.  **Seal of Value ??**: Must contain a "So that" / "BÃ¶ylece" clause.
 3.  **Seal of Victory ??**: Must have at least 3 distinct Acceptance Criteria bullets OR Gherkin syntax.
 4.  **Seal of Terrain ??**: Must have a "Dependencies" section with valid Links (Jira/Confluence).
 5.  **Seal of Cost ??**: Must include an Estimation or Points section.
@@ -93,20 +93,20 @@ The v3.0 release introduces a **Strategy Pattern** architecture:
 
 ---
 
-## ???? Türkçe Özet (Turkish Summary)
+## ???? TÃ¼rkÃ§e Ã–zet (Turkish Summary)
 
-**The Iron Gatekeeper**, Agile takimlarinin olgunluk seviyesine göre sekil degistiren çift modlu bir "Hazir Tanimi" (DoR) aracidir.
+**The Iron Gatekeeper**, Agile takimlarinin olgunluk seviyesine gÃ¶re sekil degistiren Ã§ift modlu bir "Hazir Tanimi" (DoR) aracidir.
 
-### Neden Çift Mod?
-Her takimin ihtiyaci farklidir. Yeni takimlar kurallari ögrenmek için **Sert Sinirlara**, olgun takimlar ise gelismek için **Geri Bildirime** ihtiyaç duyar.
+### Neden Ã‡ift Mod?
+Her takimin ihtiyaci farklidir. Yeni takimlar kurallari Ã¶grenmek iÃ§in **Sert Sinirlara**, olgun takimlar ise gelismek iÃ§in **Geri Bildirime** ihtiyaÃ§ duyar.
 
 ### Modlar
-1.  **??? Güç Modu (Bekçi)**: Sert kurallar. "6 Mühür" sistemi ile hikayeleri kontrol eder. Eksik varsa (örn. "Böylece" cümlesi yoksa) hikayeyi **REDDEDER**. Disiplin saglar.
-2.  **?? Koç Modu**: Puanlama sistemi. Hikayeyi 0-100 arasinda puanlar. "Persona çok muglak" veya "Kabul kriterleri az" gibi yapici geri bildirimler verir. Kaliteyi artirir.
+1.  **??? GÃ¼Ã§ Modu (BekÃ§i)**: Sert kurallar. "6 MÃ¼hÃ¼r" sistemi ile hikayeleri kontrol eder. Eksik varsa (Ã¶rn. "BÃ¶ylece" cÃ¼mlesi yoksa) hikayeyi **REDDEDER**. Disiplin saglar.
+2.  **?? KoÃ§ Modu**: Puanlama sistemi. Hikayeyi 0-100 arasinda puanlar. "Persona Ã§ok muglak" veya "Kabul kriterleri az" gibi yapici geri bildirimler verir. Kaliteyi artirir.
 
 ### Nasil Kullanilir?
-*   Sag üstteki **Power/Coach** anahtari ile modlar arasinda geçis yapabilirsiniz.
-*   Dil seçenegini **Türkçe** yaparak tüm arayüzü ve analiz kurallarini (örn. "Olarak", "Istiyorum") Türkçelestirebilirsiniz.
+*   Sag Ã¼stteki **Power/Coach** anahtari ile modlar arasinda geÃ§is yapabilirsiniz.
+*   Dil seÃ§enegini **TÃ¼rkÃ§e** yaparak tÃ¼m arayÃ¼zÃ¼ ve analiz kurallarini (Ã¶rn. "Olarak", "Istiyorum") TÃ¼rkÃ§elestirebilirsiniz.
 
 ---
 
@@ -114,3 +114,4 @@ Her takimin ihtiyaci farklidir. Yeni takimlar kurallari ögrenmek için **Sert Sin
 *   **v3.1**: Added LocalStorage Persistence (prevent data loss) and Test Suite (Unit/Integration tests).
 *   **v3.0**: Dual-Mode Architecture (Teacher/Coach strategy).
 *   **v2.0**: The 6-Seals logic introduction.
+
