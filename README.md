@@ -1,45 +1,45 @@
-# The Iron Gatekeeper
+﻿# The Iron Gatekeeper
 **Current Version:** v3.1 (Persistence & Test Suite)
 
 **The Iron Gatekeeper** is a "Dr. Jekyll & Mr. Hyde" tool for Agile teams. It combines a strict **Enforcement Engine** (Gatekeeper) with a nuanced **Coaching Engine** (Story Coach) to support teams at every stage of maturity.
 
 ---
 
-## ?? v3.1 Update: Memory & Reliability
+## 🔥 v3.1 Update: Memory & Reliability
 We have introduced two major architectural improvements based on Agile feedback cycles:
 
 ### 1. Memory Stone (Session Persistence)
 **Why?** Users reported frustration when accidental page refreshes deleted their drafted stories. "Data Loss is the enemy of Trust."
-**The Fix:** We implemented a `localStorage` auto-save system.
+**The Fix:** We implemented a localStorage auto-save system.
 *   Your inputs (Title, Content, Mode, Locale) are saved instantly as you type.
 *   Refreshing the tab restores your session exactly as you left it.
 *   It is still **Zero-Backend** (data lives only in your browser).
 
 ### 2. Proving Grounds (Test Suite)
 **Why?** As the logic for "Iron Guard" and "Cognitive Coach" became more complex, the risk of regression bugs increased.
-**The Fix:** We added a client-side test runner (`test.html`) that verifies:
+**The Fix:** We added a client-side test runner (	est.html) that verifies:
 *   **Gatekeeper Logic**: Confirming seals block bad stories (e.g., missing "Evidence").
 *   **Scoring Math**: Ensuring Coach scores are calculated correctly.
 *   **Persistence**: Verifying data is actually written to storage.
 
 ---
 
-## ?? Philosophy: The Shu-Ha-Ri Model
+## ☯️ Philosophy: The Shu-Ha-Ri Model
 
 We believe that "one size fits all" tools fail because teams evolve.
-*   **Shu (?) - Follow the Rule**: New teams need clear, rigid boundaries to feel safe. They need strict enforcement to learn the basics of a User Story.
-*   **Ha (?) - Break the Rule**: Mature teams find strict rules insulting. They need coaching and scoring to help them refine quality, not just "pass" a check.
+*   **Shu (守) - Follow the Rule**: New teams need clear, rigid boundaries to feel safe. They need strict enforcement to learn the basics of a User Story.
+*   **Ha (破) - Break the Rule**: Mature teams find strict rules insulting. They need coaching and scoring to help them refine quality, not just "pass" a check.
 
 **The Iron Gatekeeper v3** solves this by offering two distinct modes in one application:
 
-### 1. ??? Power Mode (Gatekeeper) - *The Shu*
+### 1. 🛡️ Power Mode (Gatekeeper) - *The Shu*
 *   **Persona**: The Strict Enforcer.
 *   **Logic**: Binary Pass/Fail Logic (The 6 Seals).
 *   **Theme**: Dark Fantasy.
 *   **Goal**: Stop "Lazy User Stories" from entering Refinement.
 *   **Best For**: New teams, strict contracts, or when process discipline has slipped.
 
-### 2. ?? Coach Mode (Story Coach) - *The Ha*
+### 2. 🧠 Coach Mode (Story Coach) - *The Ha*
 *   **Persona**: The Nuanced Guide.
 *   **Logic**: Weighted Scoring (0-100%).
 *   **Theme**: Modern SaaS (Light/Clean).
@@ -48,29 +48,29 @@ We believe that "one size fits all" tools fail because teams evolve.
 
 ---
 
-## ?? Key Features
+## 🚀 Key Features
 
 *   **Dual-Mode Engine**: Instantly toggle between "Power" and "Coach" modes without losing data.
 *   **Zero-Backend**: 100% Client-side. No data is ever sent to a server. Secure by design.
-*   **Localization ??**: Full support for **English (????)** and **Turkish (????)**.
+*   **Localization 🌍**: Full support for **English (🇺🇸)** and **Turkish (🇹🇷)**.
 *   **Jira Integration**: "Copy to Jira" button formats your story with headers and bullets automatically.
 
 ---
 
-## ?? The 6 Seals (Power Mode)
+## ⚔️ The 6 Seals (Power Mode)
 
 In **Power Mode**, the application enforces six strict mandatory criteria:
 
-1.  **Seal of Identity ??**: Title must be descriptive (>10 chars).
-2.  **Seal of Value ??**: Must contain a "So that" / "Böylece" clause.
-3.  **Seal of Victory ??**: Must have at least 3 distinct Acceptance Criteria bullets OR Gherkin syntax.
-4.  **Seal of Terrain ??**: Must have a "Dependencies" section with valid Links (Jira/Confluence).
-5.  **Seal of Cost ??**: Must include an Estimation or Points section.
-6.  **Seal of Evidence ??**: Must reference external assets (Figma, Mockups, Tech Analysis).
+1.  **Seal of Identity 🆔**: Title must be descriptive (>10 chars).
+2.  **Seal of Value 💎**: Must contain a "So that" / "Böylece" clause.
+3.  **Seal of Victory ⚔️**: Must have at least 3 distinct Acceptance Criteria bullets OR Gherkin syntax.
+4.  **Seal of Terrain ⛰️**: Must have a "Dependencies" section with valid Links (Jira/Confluence).
+5.  **Seal of Cost 💰**: Must include an Estimation or Points section.
+6.  **Seal of Evidence 📜**: Must reference external assets (Figma, Mockups, Tech Analysis).
 
 ---
 
-## ?? DoR Scoring (Coach Mode)
+## 📊 DoR Scoring (Coach Mode)
 
 In **Coach Mode**, the strict gates are removed. Instead, the story is analyzed for quality:
 
@@ -82,36 +82,35 @@ Result is a **0-100 Score** that challenges the team to improve.
 
 ---
 
-## ??? Architecture
+## 🏗️ Architecture
 
 The v3.0 release introduces a **Strategy Pattern** architecture:
 
-*   **`AppController`**: The central brain that manages state (Mode, Locale) and DOM updates.
-*   **`IronGuard` Class**: Encapsulates the binary validation logic for Gatekeeper Mode.
-*   **`CognitiveCoach` Class**: Encapsulates the weighted scoring math for Coach Mode.
-*   **Theme Engine**: Uses CSS Variables (`--bg-main`, `--text-main`) to instantly hot-swap the entire visual language of the app based on the selected mode.
+*   **AppController**: The central brain that manages state (Mode, Locale) and DOM updates.
+*   **IronGuard Class**: Encapsulates the binary validation logic for Gatekeeper Mode.
+*   **CognitiveCoach Class**: Encapsulates the weighted scoring math for Coach Mode.
+*   **Theme Engine**: Uses CSS Variables (--bg-main, --text-main) to instantly hot-swap the entire visual language of the app based on the selected mode.
 
 ---
 
-## ???? Türkçe Özet (Turkish Summary)
+## 🇹🇷 Türkçe Özet (Turkish Summary)
 
-**The Iron Gatekeeper**, Agile takimlarinin olgunluk seviyesine göre sekil degistiren çift modlu bir "Hazir Tanimi" (DoR) aracidir.
+**The Iron Gatekeeper**, Agile takımlarının olgunluk seviyesine göre şekil değiştiren çift modlu bir "Hazır Tanımı" (DoR) aracıdır.
 
 ### Neden Çift Mod?
-Her takimin ihtiyaci farklidir. Yeni takimlar kurallari ögrenmek için **Sert Sinirlara**, olgun takimlar ise gelismek için **Geri Bildirime** ihtiyaç duyar.
+Her takımın ihtiyacı farklıdır. Yeni takımlar kuralları öğrenmek için **Sert Sınırlara**, olgun takımlar ise gelişmek için **Geri Bildirime** ihtiyaç duyar.
 
 ### Modlar
-1.  **??? Güç Modu (Bekçi)**: Sert kurallar. "6 Mühür" sistemi ile hikayeleri kontrol eder. Eksik varsa (örn. "Böylece" cümlesi yoksa) hikayeyi **REDDEDER**. Disiplin saglar.
-2.  **?? Koç Modu**: Puanlama sistemi. Hikayeyi 0-100 arasinda puanlar. "Persona çok muglak" veya "Kabul kriterleri az" gibi yapici geri bildirimler verir. Kaliteyi artirir.
+1.  **🛡️ Güç Modu (Bekçi)**: Sert kurallar. "6 Mühür" sistemi ile hikayeleri kontrol eder. Eksik varsa (örn. "Böylece" cümlesi yoksa) hikayeyi **REDDEDER**. Disiplin sağlar.
+2.  **🧠 Koç Modu**: Puanlama sistemi. Hikayeyi 0-100 arasında puanlar. "Persona çok muğlak" veya "Kabul kriterleri az" gibi yapıcı geri bildirimler verir. Kaliteyi artırır.
 
-### Nasil Kullanilir?
-*   Sag üstteki **Power/Coach** anahtari ile modlar arasinda geçis yapabilirsiniz.
-*   Dil seçenegini **Türkçe** yaparak tüm arayüzü ve analiz kurallarini (örn. "Olarak", "Istiyorum") Türkçelestirebilirsiniz.
+### Nasıl Kullanılır?
+*   Sağ üstteki **Power/Coach** anahtarı ile modlar arasında geçiş yapabilirsiniz.
+*   Dil seçeneğini **Türkçe** yaparak tüm arayüzü ve analiz kurallarını (örn. "Olarak", "İstiyorum") Türkçeleştirebilirsiniz.
 
 ---
 
-## ?? Version History
+## 📜 Version History
 *   **v3.1**: Added LocalStorage Persistence (prevent data loss) and Test Suite (Unit/Integration tests).
 *   **v3.0**: Dual-Mode Architecture (Teacher/Coach strategy).
 *   **v2.0**: The 6-Seals logic introduction.
-
