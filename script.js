@@ -85,7 +85,7 @@ const LOCALE_CONFIG = {
             labelTitle: "Story Title", phTitle: "e.g., User Login with Google Auth",
             labelContent: "Story Definition",
             labelAC: "(Must include: So that, ACs, Dependencies, Estimation)",
-            phContent: "As a [role], I want to [action], so that [benefit]...\n\nAcceptance Criteria:\n- Criteria 1\n- Criteria 2\n\nDependencies:\n- None\n\nEstimation:\n- 3 Points",
+            phContent: "As a [role], I want to [action], so that [benefit]...\\n\\nAcceptance Criteria:\\n- Criteria 1\\n- Criteria 2\\n\\nDependencies:\\n- None\\n\\nEstimation:\\n- 3 Points",
 
             btnAnalyze: "Analyze Story",
             btnDemo: "Load Demo Story",
@@ -118,17 +118,17 @@ const LOCALE_CONFIG = {
     },
     tr: {
         patterns: {
-            format: /(.+)\s+Olarak\s*,?\s*(.+)\s+İstiyorum\s*,?\s*Böylece\s+(.+)/is,
-            lazyPersona: /(?<!Kayıtlı\s+)(Kullanıcı|Yönetici|Admin)\s+Olarak/i,
-            valueClause: /Böylece\s+(.+)/i,
+            format: /(.+)\\s+Olarak\\s*,?\\s*(.+)\\s+İstiyorum\\s*,?\\s*Böylece\\s+(.+)/is,
+            lazyPersona: /(?<!Kayıtlı\\s+)(Kullanıcı|Yönetici|Admin)\\s+Olarak/i,
+            valueClause: /Böylece\\s+(.+)/i,
             acKeyword: /(Kabul Kriterleri|Kabul Şartları|ACs)/i,
             gherkin: /(Diyelim ki|Eğer ki|O zaman)/i,
-            listItems: /^\s*(-|\*|\d+\.|•)\s+.+/gm,
+            listItems: /^\\s*(-|\\*|\\d+\\.|•)\\s+.+/gm,
             terrain: /(Bağımlılıklar|Riskler|Teknik Notlar|Notlar|Ön koşullar)/i,
             terrainNone: /(Yok|None|Bulunmuyor)/i,
-            link: /(http|https|jira|confluence|\.com|\.org)/i,
+            link: /(http|https|jira|confluence|\\.com|\\.org)/i,
             cost: /(Tahmin|Puan|Efor|Karmaşıklık|Story Points)/i,
-            evidence: /(Figma|Mockup|Ekran|Screenshot|Görsel|Tasarım|Draw\.io|Miro|Confluence|Analiz)/i
+            evidence: /(Figma|Mockup|Ekran|Screenshot|Görsel|Tasarım|Draw\\.io|Miro|Confluence|Analiz)/i
         },
         keywords: [
             'gelir', 'kar', 'tasarruf', 'maliyet', 'kayıp', 'sadakat',
@@ -188,7 +188,7 @@ const LOCALE_CONFIG = {
             labelTitle: "Hikaye Başlığı", phTitle: "örn., Google ile Giriş Yapma",
             labelContent: "Hikaye Tanımı ve Kriterler",
             labelAC: "(Format: Böylece, KK, Bağımlılıklar, Tahmin)",
-            phContent: "[Rol] Olarak, [İstek] İstiyorum, Böylece [Fayda]...\n\nKabul Kriterleri:\n- Kriter 1\n- Kriter 2\n\nBağımlılıklar:\n- Yok\n\nTahmin:\n- 3 Puan",
+            phContent: "[Rol] Olarak, [İstek] İstiyorum, Böylece [Fayda]...\\n\\nKabul Kriterleri:\\n- Kriter 1\\n- Kriter 2\\n\\nBağımlılıklar:\\n- Yok\\n\\nTahmin:\\n- 3 Puan",
 
             btnAnalyze: "Analiz Et",
             btnDemo: "Örnek Yükle",
@@ -454,8 +454,44 @@ class AppController {
 
     init() {
         this.bindEvents();
-        // Initial set based on default toggle state (unchecked = GK)
+        this.loadState(); // Restore previous session
         this.updateModeUI();
+    }
+
+    loadState() {
+        const saved = localStorage.getItem('iron_gatekeeper_v3');
+        if (saved) {
+            try {
+                const state = JSON.parse(saved);
+                if (state.title) this.titleInput.value = state.title;
+                if (state.content) this.contentInput.value = state.content;
+                if (state.mode) {
+                    this.currentMode = state.mode;
+                    this.modeToggle.checked = (state.mode === 'COACH');
+                }
+                if (state.locale) {
+                    this.currentLocale = state.locale;
+                    const langSel = document.getElementById('lang-select');
+                    if (langSel) langSel.value = state.locale;
+
+                    // Update engines
+                    this.ironGuard.setLocale(this.currentLocale);
+                    this.cognitiveCoach.setLocale(this.currentLocale);
+                }
+            } catch (e) {
+                console.error("Failed to load state", e);
+            }
+        }
+    }
+
+    saveState() {
+        const state = {
+            title: this.titleInput.value,
+            content: this.contentInput.value,
+            mode: this.currentMode,
+            locale: this.currentLocale
+        };
+        localStorage.setItem('iron_gatekeeper_v3', JSON.stringify(state));
     }
 
     bindEvents() {
@@ -463,12 +499,23 @@ class AppController {
         this.modeToggle.addEventListener('change', (e) => {
             this.currentMode = e.target.checked ? 'COACH' : 'GATEKEEPER';
             this.updateModeUI();
+            this.saveState();
         });
 
         document.getElementById('analyze-btn').addEventListener('click', () => this.runAnalysis());
-        document.getElementById('clear-btn').addEventListener('click', () => this.clear());
-        document.getElementById('load-btn').addEventListener('click', () => this.loadExample());
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            this.clear();
+            this.saveState();
+        });
+        document.getElementById('load-btn').addEventListener('click', () => {
+            this.loadExample();
+            this.saveState();
+        });
         document.getElementById('copy-jira-btn').addEventListener('click', () => this.copyToJira());
+
+        // Autosave inputs
+        this.titleInput.addEventListener('input', () => this.saveState());
+        this.contentInput.addEventListener('input', () => this.saveState());
 
         const langSel = document.getElementById('lang-select');
         if (langSel) langSel.addEventListener('change', (e) => {
@@ -476,6 +523,7 @@ class AppController {
             this.ironGuard.setLocale(this.currentLocale);
             this.cognitiveCoach.setLocale(this.currentLocale);
             this.updateInterface();
+            this.saveState();
         });
     }
 

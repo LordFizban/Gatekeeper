@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iron Gatekeeper Tests</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 2rem;
+        }
+
+        .test-item {
+            padding: 0.5rem;
+            margin-bottom: 0.2rem;
+            border-radius: 4px;
+        }
+
+        .pass {
+            background: rgba(74, 222, 128, 0.2);
+            border-left: 4px solid #4ade80;
+            color: #4ade80;
+        }
+
+        .fail {
+            background: rgba(248, 113, 113, 0.2);
+            border-left: 4px solid #f87171;
+            color: #f87171;
+        }
+
+        h1 {
+            border-bottom: 1px solid #334155;
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🛡️ Test Runner</h1>
+    <div id="results"></div>
+
+    <!-- MOCK DOM for Tests -->
+    <div id="test-dom" style="display:none;">
+        <input id="story-title" />
+        <textarea id="story-content"></textarea>
+        <input type="checkbox" id="mode-toggle-input" />
+        <select id="lang-select">
+            <option value="en">en</option>
+        </select>
+        <div id="results-gatekeeper"></div>
+        <div id="results-coach"></div>
+        <div id="digital-stamp"><span class="stamp-text"></span></div>
+        <div id="gk-feedback-list"></div>
+        <div id="coach-feedback-list"></div>
+        <button id="analyze-btn"></button>
+        <button id="load-btn"></button>
+        <button id="clear-btn"></button>
+        <button id="copy-jira-btn"></button>
+        <h1 class="gradient-text"></h1>
+        <p class="subtitle"></p>
+        <div class="ritual-checks">
+            <input type="checkbox" id="check-refinement">
+            <input type="checkbox" id="check-alignment">
+        </div>
+        <div class="progress-ring__circle" r="70" style="stroke-dasharray: 439.82; stroke-dashoffset: 0;"></div>
+        <div class="score-value"></div>
+        <span id="label-refinement"></span>
+        <span id="label-alignment"></span>
+        <span id="label-title"></span>
+        <span id="label-content"></span>
+        <span id="label-ac"></span>
+        <span id="mode-label-text"></span>
+    </div>
+
+    <!-- Load App Logic -->
+    <script src="script.js"></script>
+    <!-- Load Tests -->
+    <script src="tests.js"></script>
+</body>
+
+</html>
