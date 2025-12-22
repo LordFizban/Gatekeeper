@@ -10,14 +10,14 @@ We have introduced two major architectural improvements based on Agile feedback 
 
 ### 1. Memory Stone (Session Persistence)
 **Why?** Users reported frustration when accidental page refreshes deleted their drafted stories. "Data Loss is the enemy of Trust."
-**The Fix:** We implemented a localStorage auto-save system.
+**The Fix:** We implemented a `localStorage` auto-save system.
 *   Your inputs (Title, Content, Mode, Locale) are saved instantly as you type.
 *   Refreshing the tab restores your session exactly as you left it.
 *   It is still **Zero-Backend** (data lives only in your browser).
 
 ### 2. Proving Grounds (Test Suite)
 **Why?** As the logic for "Iron Guard" and "Cognitive Coach" became more complex, the risk of regression bugs increased.
-**The Fix:** We added a client-side test runner (	est.html) that verifies:
+**The Fix:** We added a client-side test runner (`test.html`) that verifies:
 *   **Gatekeeper Logic**: Confirming seals block bad stories (e.g., missing "Evidence").
 *   **Scoring Math**: Ensuring Coach scores are calculated correctly.
 *   **Persistence**: Verifying data is actually written to storage.
@@ -86,10 +86,10 @@ Result is a **0-100 Score** that challenges the team to improve.
 
 The v3.0 release introduces a **Strategy Pattern** architecture:
 
-*   **AppController**: The central brain that manages state (Mode, Locale) and DOM updates.
-*   **IronGuard Class**: Encapsulates the binary validation logic for Gatekeeper Mode.
-*   **CognitiveCoach Class**: Encapsulates the weighted scoring math for Coach Mode.
-*   **Theme Engine**: Uses CSS Variables (--bg-main, --text-main) to instantly hot-swap the entire visual language of the app based on the selected mode.
+*   **`AppController`**: The central brain that manages state (Mode, Locale) and DOM updates.
+*   **`IronGuard` Class**: Encapsulates the binary validation logic for Gatekeeper Mode.
+*   **`CognitiveCoach` Class**: Encapsulates the weighted scoring math for Coach Mode.
+*   **Theme Engine**: Uses CSS Variables (`--bg-main`, `--text-main`) to instantly hot-swap the entire visual language of the app based on the selected mode.
 
 ---
 
