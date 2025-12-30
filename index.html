@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,7 +22,7 @@
             <div class="controls-row">
                 <!-- Mode Toggle -->
                 <div class="mode-toggle-container">
-                    <span id="mode-label-text" class="mode-label">🛡️ Power</span>
+                    <span id="mode-label-text" class="mode-label">💪 Power</span>
                     <label class="toggle-switch">
                         <input type="checkbox" id="mode-toggle-input">
                         <span class="toggle-slider"></span>
@@ -79,42 +79,42 @@
                     <h3 data-i18n="headerCriteria">The 6 Seals</h3>
                     <div class="criteria-grid compact">
                         <div class="criteria-card">
-                            <div class="icon">🆔</div>
+                            <div class="icon">🆔️</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal0Title">Identity</h4>
                                 <p data-i18n="refSeal0Desc">Title</p>
                             </div>
                         </div>
                         <div class="criteria-card">
-                            <div class="icon">💎</div>
+                            <div class="icon">💎️</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal1Title">Value</h4>
                                 <p data-i18n="refSeal1Desc">So that...</p>
                             </div>
                         </div>
                         <div class="criteria-card">
-                            <div class="icon">⚔️</div>
+                            <div class="icon">⚔️️</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal2Title">Victory</h4>
                                 <p data-i18n="refSeal2Desc">3+ ACs</p>
                             </div>
                         </div>
                         <div class="criteria-card">
-                            <div class="icon">🗺️</div>
+                            <div class="icon">🗺️️</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal3Title">Terrain</h4>
                                 <p data-i18n="refSeal3Desc">Links</p>
                             </div>
                         </div>
                         <div class="criteria-card">
-                            <div class="icon">💰</div>
+                            <div class="icon">💰️</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal4Title">Cost</h4>
                                 <p data-i18n="refSeal4Desc">Points</p>
                             </div>
                         </div>
                         <div class="criteria-card">
-                            <div class="icon">📜</div>
+                            <div class="icon">📜️</div>
                             <div class="text">
                                 <h4 data-i18n="refSeal5Title">Evidence</h4>
                                 <p data-i18n="refSeal5Desc">Arts/Docs</p>
@@ -178,7 +178,17 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+        <script src="js/config/locales.js"></script>
+    <script src="js/core/IronGuard.js"></script>
+    <script src="js/core/CognitiveCoach.js"></script>
+    <script src="js/AppController.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.app = new AppController();
+        });
+    </script>
 </body>
 
 </html>
+
+

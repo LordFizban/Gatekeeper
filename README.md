@@ -1,26 +1,7 @@
 ﻿# The Iron Gatekeeper
-**Current Version:** v3.1 (Persistence & Test Suite)
+**Current Version:** v3.3 (Hardened Security)
 
 **The Iron Gatekeeper** is a "Dr. Jekyll & Mr. Hyde" tool for Agile teams. It combines a strict **Enforcement Engine** (Gatekeeper) with a nuanced **Coaching Engine** (Story Coach) to support teams at every stage of maturity.
-
----
-
-## 🔥 v3.1 Update: Memory & Reliability
-We have introduced two major architectural improvements based on Agile feedback cycles:
-
-### 1. Memory Stone (Session Persistence)
-**Why?** Users reported frustration when accidental page refreshes deleted their drafted stories. "Data Loss is the enemy of Trust."
-**The Fix:** We implemented a `localStorage` auto-save system.
-*   Your inputs (Title, Content, Mode, Locale) are saved instantly as you type.
-*   Refreshing the tab restores your session exactly as you left it.
-*   It is still **Zero-Backend** (data lives only in your browser).
-
-### 2. Proving Grounds (Test Suite)
-**Why?** As the logic for "Iron Guard" and "Cognitive Coach" became more complex, the risk of regression bugs increased.
-**The Fix:** We added a client-side test runner (`test.html`) that verifies:
-*   **Gatekeeper Logic**: Confirming seals block bad stories (e.g., missing "Evidence").
-*   **Scoring Math**: Ensuring Coach scores are calculated correctly.
-*   **Persistence**: Verifying data is actually written to storage.
 
 ---
 
@@ -32,64 +13,15 @@ We believe that "one size fits all" tools fail because teams evolve.
 
 **The Iron Gatekeeper v3** solves this by offering two distinct modes in one application:
 
-### 1. 🛡️ Power Mode (Gatekeeper) - *The Shu*
-*   **Persona**: The Strict Enforcer.
+### 1. 💪 Power Mode (Gatekeeper) - *The Shu*
 *   **Logic**: Binary Pass/Fail Logic (The 6 Seals).
-*   **Theme**: Dark Fantasy.
+*   **Theme**: Dark Fantasy / Strict Discipline.
 *   **Goal**: Stop "Lazy User Stories" from entering Refinement.
-*   **Best For**: New teams, strict contracts, or when process discipline has slipped.
 
-### 2. 🧠 Coach Mode (Story Coach) - *The Ha*
-*   **Persona**: The Nuanced Guide.
+### 2. 🧠 Coach Mode (Story Coach) - *The Ha/Ri*
 *   **Logic**: Weighted Scoring (0-100%).
-*   **Theme**: Modern SaaS (Light/Clean).
+*   **Theme**: Modern SaaS / Nuanced Guidance.
 *   **Goal**: Improve clarity and value. "Good is the enemy of Great."
-*   **Best For**: Mature teams, drafting sessions, and retrospective quality reviews.
-
----
-
-## 🚀 Key Features
-
-*   **Dual-Mode Engine**: Instantly toggle between "Power" and "Coach" modes without losing data.
-*   **Zero-Backend**: 100% Client-side. No data is ever sent to a server. Secure by design.
-*   **Localization 🌍**: Full support for **English (🇺🇸)** and **Turkish (🇹🇷)**.
-*   **Jira Integration**: "Copy to Jira" button formats your story with headers and bullets automatically.
-
----
-
-## ⚔️ The 6 Seals (Power Mode)
-
-In **Power Mode**, the application enforces six strict mandatory criteria:
-
-1.  **Seal of Identity 🆔**: Title must be descriptive (>10 chars).
-2.  **Seal of Value 💎**: Must contain a "So that" / "Böylece" clause.
-3.  **Seal of Victory ⚔️**: Must have at least 3 distinct Acceptance Criteria bullets OR Gherkin syntax.
-4.  **Seal of Terrain ⛰️**: Must have a "Dependencies" section with valid Links (Jira/Confluence).
-5.  **Seal of Cost 💰**: Must include an Estimation or Points section.
-6.  **Seal of Evidence 📜**: Must reference external assets (Figma, Mockups, Tech Analysis).
-
----
-
-## 📊 DoR Scoring (Coach Mode)
-
-In **Coach Mode**, the strict gates are removed. Instead, the story is analyzed for quality:
-
-*   **Clarity**: Is the persona specific? Is the title clear?
-*   **Value**: Is the "So that" clause generic or specific (e.g., mentions "revenue", "efficiency")?
-*   **Testability**: Are the acceptance criteria detailed enough (BDD/Gherkin)?
-
-Result is a **0-100 Score** that challenges the team to improve.
-
----
-
-## 🏗️ Architecture
-
-The v3.0 release introduces a **Strategy Pattern** architecture:
-
-*   **`AppController`**: The central brain that manages state (Mode, Locale) and DOM updates.
-*   **`IronGuard` Class**: Encapsulates the binary validation logic for Gatekeeper Mode.
-*   **`CognitiveCoach` Class**: Encapsulates the weighted scoring math for Coach Mode.
-*   **Theme Engine**: Uses CSS Variables (`--bg-main`, `--text-main`) to instantly hot-swap the entire visual language of the app based on the selected mode.
 
 ---
 
@@ -97,20 +29,56 @@ The v3.0 release introduces a **Strategy Pattern** architecture:
 
 **The Iron Gatekeeper**, Agile takımlarının olgunluk seviyesine göre şekil değiştiren çift modlu bir "Hazır Tanımı" (DoR) aracıdır.
 
-### Neden Çift Mod?
-Her takımın ihtiyacı farklıdır. Yeni takımlar kuralları öğrenmek için **Sert Sınırlara**, olgun takımlar ise gelişmek için **Geri Bildirime** ihtiyaç duyar.
-
 ### Modlar
-1.  **🛡️ Güç Modu (Bekçi)**: Sert kurallar. "6 Mühür" sistemi ile hikayeleri kontrol eder. Eksik varsa (örn. "Böylece" cümlesi yoksa) hikayeyi **REDDEDER**. Disiplin sağlar.
-2.  **🧠 Koç Modu**: Puanlama sistemi. Hikayeyi 0-100 arasında puanlar. "Persona çok muğlak" veya "Kabul kriterleri az" gibi yapıcı geri bildirimler verir. Kaliteyi artırır.
+1.  **💪 Güç Modu (Bekçi)**: Sert kurallar. "6 Mühür" sistemi ile hikayeleri kontrol eder. Eksik varsa hikayeyi **REDDEDER**. Disiplin sağlar.
+2.  **🧠 Koç Modu**: Puanlama sistemi. Hikayeyi 0-100 arasında puanlar. Yapıcı geri bildirimler verir. Kaliteyi artırır.
 
-### Nasıl Kullanılır?
-*   Sağ üstteki **Power/Coach** anahtarı ile modlar arasında geçiş yapabilirsiniz.
-*   Dil seçeneğini **Türkçe** yaparak tüm arayüzü ve analiz kurallarını (örn. "Olarak", "İstiyorum") Türkçeleştirebilirsiniz.
+### Güncel Güvenlik (v3.3)
+Analiz sonuçları artık **XSS saldırılarına karşı korumalıdır** ve verileriniz gizlilik için sadece **oturum bazlı (sessionStorage)** saklanır.
 
 ---
 
-## 📜 Version History
-*   **v3.1**: Added LocalStorage Persistence (prevent data loss) and Test Suite (Unit/Integration tests).
-*   **v3.0**: Dual-Mode Architecture (Teacher/Coach strategy).
-*   **v2.0**: The 6-Seals logic introduction.
+## 🚀 Key Features
+
+*   **Dual-Mode Engine**: Instantly toggle between "Power" and "Coach" modes without losing data.
+*   **Zero-Backend**: 100% Client-side. No data is ever sent to a server. Secure by design.
+*   **Jira Integration**: "Copy to Jira" button formats your story with headers and bullets automatically.
+
+### ⚔️ The 6 Seals (Power Mode)
+In **Power Mode**, we enforce six strict mandatory criteria:
+1. **Identity 🆔**: Title > 10 chars.
+2. **Value 💎**: Must contain "So that" / "Böylece".
+3. **Victory ⚔️**: Minimum 3 AC bullets or Gherkin.
+4. **Terrain ⛰️**: Dependency links.
+5. **Cost 💰**: Estimation/Points.
+6. **Evidence 📜**: Figma/Mockup links.
+
+---
+
+## 🏗️ Architecture & Security
+
+The v3.3 release focuses on the **Strategy Pattern** and the **Hardened Perimeter**:
+*   **AppController**: Manages state (Mode, Locale) and sanitized DOM updates.
+*   **Sanitization**: All output is rendered via textContent (DOM Hardening).
+*   **Privacy**: State is isolated to sessionStorage.
+
+---
+
+## 📜 Version History & Release Notes
+
+### v3.3: Hardened Perimeter (Current)
+- **DOM Hardening**: XSS mitigation via sanitized rendering.
+- **Privacy Lock**: Moved to sessionStorage for automatic data purging.
+
+### v3.2: Structure & Time Travel
+- **Modular Core**: Split into IronGuard.js, CognitiveCoach.js, AppController.js.
+- **Snapshot History**: Added a 5-step Undo stack.
+- **Visuals**: Fixed Turkish encoding and colorful emojis.
+
+### v3.1: Memory & Reliability
+- Added localStorage persistence (v3.3 has since upgraded this to sessionStorage).
+- Integrated test.html test suite.
+
+### v3.0: Dual-Mode Architecture
+- Introduction of the Shu-Ha-Ri multi-engine strategy.
+

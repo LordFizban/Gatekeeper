@@ -1,11 +1,11 @@
-
+﻿
 // Global Error Handler for Test Runner
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     const results = document.getElementById('results');
     if (results) {
         const div = document.createElement('div');
         div.className = 'test-item fail';
-        div.innerHTML = `⚠️ <strong>RUNTIME ERROR</strong>: ${msg} <br> <small>${url}:${lineNo}</small>`;
+        div.innerHTML = ?? <strong>RUNTIME ERROR</strong>: \ <br> <small>\:\</small>;
         results.appendChild(div);
     }
     return false;
@@ -19,10 +19,10 @@ const runTest = (name, fn) => {
     try {
         fn();
         div.classList.add('pass');
-        div.innerHTML = `✅ <strong>PASS</strong>: ${name}`;
+        div.innerHTML = ? <strong>PASS</strong>: \;
     } catch (e) {
         div.classList.add('fail');
-        div.innerHTML = `❌ <strong>FAIL</strong>: ${name} <br> <small>${e.message}</small>`;
+        div.innerHTML = ? <strong>FAIL</strong>: \ <br> <small>\</small>;
         console.error(e);
     }
     results.appendChild(div);
@@ -32,13 +32,21 @@ const assert = (condition, message) => {
     if (!condition) throw new Error(message || "Assertion failed");
 };
 
-// MOCK LOCALSTORAGE
-const mockStorage = {};
+// MOCK STORAGE
+const mockLocal = {};
+const mockSession = {};
 Object.defineProperty(window, 'localStorage', {
     value: {
-        getItem: (key) => mockStorage[key] || null,
-        setItem: (key, val) => mockStorage[key] = val,
-        clear: () => { for (let k in mockStorage) delete mockStorage[k]; }
+        getItem: (key) => mockLocal[key] || null,
+        setItem: (key, val) => mockLocal[key] = val,
+        clear: () => { for (let k in mockLocal) delete mockLocal[k]; }
+    }
+});
+Object.defineProperty(window, 'sessionStorage', {
+    value: {
+        getItem: (key) => mockSession[key] || null,
+        setItem: (key, val) => mockSession[key] = val,
+        clear: () => { for (let k in mockSession) delete mockSession[k]; }
     }
 });
 
@@ -46,10 +54,9 @@ Object.defineProperty(window, 'localStorage', {
 window.addEventListener('load', () => {
 
     try {
-        console.log("🚀 Starting Tests...");
+        console.log("?? Starting Tests...");
 
         // Initialize App
-        // We need to ensure we don't conflict with the main window.app if it exists
         const app = new AppController();
 
         // --- 1. IRON GUARD TESTS ---
@@ -57,7 +64,6 @@ window.addEventListener('load', () => {
             const title = "Valid Story Title Check";
             const content = "As a user, I want X, So that Y.\n\nAcceptance Criteria:\n- item 1\n- item 2\n- item 3\n\nDependencies:\n- None\n\nEstimation:\n- 35\n\nEvidence:\n- Figma Link";
 
-            // Mock checkboxes
             document.getElementById('check-refinement').checked = true;
             document.getElementById('check-alignment').checked = true;
 
@@ -81,26 +87,93 @@ window.addEventListener('load', () => {
             const content = "As a Registered User, I want to login, So that I can access my data securely.\n\nAcceptance Criteria:\n- Enter email\n- Enter pass\n- Click login\n\nDependencies:\n- None";
 
             const res = app.cognitiveCoach.analyze(title, content);
-            assert(res.score > 50, `Score too low: ${res.score}`);
+            assert(res.score > 50, Score too low: \);
         });
 
-        // --- 3. PERSISTENCE TESTS ---
-        runTest('SYS: Saves to LocalStorage', () => {
-            app.titleInput.value = "Saved Title";
+        // --- 3. PERSISTENCE TESTS (v3.3 Update: sessionStorage) ---
+        runTest('SYS: Saves to sessionStorage (Not localStorage)', () => {
+            // Clear both
+            for (let k in mockLocal) delete mockLocal[k];
+            for (let k in mockSession) delete mockSession[k];
+
+            app.titleInput.value = "Session Story";
             app.saveState();
 
-            // Note: Since we mocked localStorage above, we check our mock
-            const jsonStr = mockStorage['iron_gatekeeper_v3'];
-            assert(jsonStr, "No data written to storage");
+            assert(!mockLocal['iron_gatekeeper_v3'], "Should NOT save to localStorage");
+            const jsonStr = mockSession['iron_gatekeeper_v3'];
+            assert(jsonStr, "Data should be in sessionStorage");
             const json = JSON.parse(jsonStr);
-            assert(json.title === "Saved Title", "Title did not save to storage");
+            assert(json.title === "Session Story", "Content mismatch");
+        });
+
+        // --- 4. HISTORY TESTS ---
+        runTest('HIST: Stack Limit 5', () => {
+            app.history = []; // reset
+            for(let i=1; i<=7; i++) {
+                app.titleInput.value = "Title " + i;
+                app.contentInput.value = "Content " + i;
+                app.pushHistory(); // Simulate save trigger
+            }
+            assert(app.history.length === 5, History should be capped at 5, got \);
+            assert(app.history[4].title === "Title 7", Last item should be Title 7, got \);
+            assert(app.history[0].title === "Title 3", First item should be Title 3 (shifted), got \);
+        });
+
+        runTest('HIST: Restore works', () => {
+             app.history = [];
+             app.titleInput.value = "Original";
+             app.contentInput.value = "Original Content";
+             app.pushHistory();
+
+             app.titleInput.value = "Modified";
+             app.contentInput.value = "Modified Content";
+             // Now pop explicitly
+             
+             app.popHistory();
+             assert(app.titleInput.value === "Original", "Should restore title to Original");
+             assert(app.contentInput.value === "Original Content", "Should restore content");
+        });
+
+        // --- 5. DOM HARDENING (XSS) TESTS ---
+        runTest('XSS: Gatekeeper results should neutralize script tags', () => {
+            const maliciousResult = {
+                type: 'gatekeeper',
+                isBlocked: true,
+                seals: [{
+                    name: 'Identity',
+                    status: 'fail',
+                    title: 'Broken Header',
+                    msg: '<img src=x onerror=alert(1)>' // Malicious payload
+                }]
+            };
+            app.renderGatekeeperResults(maliciousResult);
+            
+            const list = document.getElementById('gk-feedback-list');
+            const desc = list.querySelector('.seal-desc');
+            // If textContent is used, it should literally show the tag
+            assert(desc.innerHTML.includes('&lt;img'), "Tag should be escaped/neutralized");
+            assert(desc.textContent.includes('<img src=x'), "Payload should be literal text");
+            assert(desc.querySelector('img') === null, "No image element should be created from payload");
+        });
+
+        runTest('XSS: Coach feedback should neutralize script tags', () => {
+            const maliciousCoach = {
+                score: 10,
+                categories: {
+                    'CLARITY': { percent: 10, feedback: [{ type: 'fail', title: 'XSS', message: '<script>alert(1)</script>' }] }
+                }
+            };
+            app.renderCoachResults(maliciousCoach);
+            const list = document.getElementById('coach-feedback-list');
+            const feedbackItem = list.querySelector('.feedback-content p');
+            assert(feedbackItem.querySelector('script') === null, "No script element should be injected");
         });
 
     } catch (criticalError) {
         const results = document.getElementById('results');
         const div = document.createElement('div');
         div.className = 'test-item fail';
-        div.innerHTML = `🛑 <strong>CRITICAL FAIL</strong>: ${criticalError.message}`;
+        div.innerHTML = ?? <strong>CRITICAL FAIL</strong>: \;
         results.appendChild(div);
     }
 });
