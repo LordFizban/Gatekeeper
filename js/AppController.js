@@ -318,7 +318,7 @@ class AppController {
         // Reset animation
         const radius = ring.r.baseVal.value;
         const circumference = radius * 2 * Math.PI;
-        ring.style.strokeDasharray = ` `;
+        ring.style.strokeDasharray = `${circumference} ${circumference}`;
 
         const offset = circumference - ((result.score / 100) * circumference);
         ring.style.strokeDashoffset = offset;
@@ -408,3 +408,8 @@ class AppController {
         } catch (e) { alert("Error copying"); }
     }
 }
+
+
+
+
+

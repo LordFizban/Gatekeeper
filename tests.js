@@ -5,7 +5,7 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     if (results) {
         const div = document.createElement('div');
         div.className = 'test-item fail';
-        div.innerHTML = ?? <strong>RUNTIME ERROR</strong>: \ <br> <small>\:\</small>;
+        div.innerHTML = '\u{1F6E1} <strong>RUNTIME ERROR</strong>: <br> <small>:' + (e ? e.message : 'Unknown') + '</small>';
         results.appendChild(div);
     }
     return false;
@@ -19,10 +19,10 @@ const runTest = (name, fn) => {
     try {
         fn();
         div.classList.add('pass');
-        div.innerHTML = ? <strong>PASS</strong>: \;
+        div.innerHTML = '\u2705 <strong>PASS</strong>: ' + name;
     } catch (e) {
         div.classList.add('fail');
-        div.innerHTML = ? <strong>FAIL</strong>: \ <br> <small>\</small>;
+        div.innerHTML = '\u274C <strong>FAIL</strong>: ' + name + '<br><small>' + e.message + '</small>';
         console.error(e);
     }
     results.appendChild(div);
@@ -54,7 +54,7 @@ Object.defineProperty(window, 'sessionStorage', {
 window.addEventListener('load', () => {
 
     try {
-        console.log("?? Starting Tests...");
+        console.log("\u{1F6E1} Starting Tests...");
 
         // Initialize App
         const app = new AppController();
@@ -87,7 +87,7 @@ window.addEventListener('load', () => {
             const content = "As a Registered User, I want to login, So that I can access my data securely.\n\nAcceptance Criteria:\n- Enter email\n- Enter pass\n- Click login\n\nDependencies:\n- None";
 
             const res = app.cognitiveCoach.analyze(title, content);
-            assert(res.score > 50, Score too low: \);
+            assert(res.score > 50, "Score too low: " + res.score);
         });
 
         // --- 3. PERSISTENCE TESTS (v3.3 Update: sessionStorage) ---
@@ -114,9 +114,9 @@ window.addEventListener('load', () => {
                 app.contentInput.value = "Content " + i;
                 app.pushHistory(); // Simulate save trigger
             }
-            assert(app.history.length === 5, History should be capped at 5, got \);
-            assert(app.history[4].title === "Title 7", Last item should be Title 7, got \);
-            assert(app.history[0].title === "Title 3", First item should be Title 3 (shifted), got \);
+            assert(app.history.length === 5, `"History should be capped at 5, got `" + app.history.length);
+            assert(app.history[4].title === "Title 7", `"Last item should be Title 7, got `" + app.history[4].title);
+            assert(app.history[0].title === "Title 3", `"First item should be Title 3 (shifted), got `" + app.history[0].title);
         });
 
         runTest('HIST: Restore works', () => {
@@ -132,6 +132,27 @@ window.addEventListener('load', () => {
              app.popHistory();
              assert(app.titleInput.value === "Original", "Should restore title to Original");
              assert(app.contentInput.value === "Original Content", "Should restore content");
+        });
+
+                runTest('FIX: Coach Mode Ring should have correct offset', () => {
+            const result = {
+                score: 46,
+                categories: {
+                    'CLARITY': { percent: 40, feedback: [] },
+                    'TESTABILITY': { percent: 60, feedback: [] },
+                    'VALUE': { percent: 33, feedback: [] }
+                }
+            };
+            app.renderCoachResults(result);
+            const ring = document.querySelector('.progress-ring__circle');
+            const radius = ring.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            const expectedOffset = circumference - (46 / 100 * circumference);
+            const actualOffset = parseFloat(ring.style.strokeDashoffset);
+            
+            // Tolerance for float comparison
+            assert(Math.abs(actualOffset - expectedOffset) < 1, "Offset mismatch!");
+            assert(ring.style.strokeDasharray.includes(circumference.toString().split('.')[0]), "DashArray not set properly");
         });
 
         // --- 5. DOM HARDENING (XSS) TESTS ---
@@ -173,7 +194,8 @@ window.addEventListener('load', () => {
         const results = document.getElementById('results');
         const div = document.createElement('div');
         div.className = 'test-item fail';
-        div.innerHTML = ?? <strong>CRITICAL FAIL</strong>: \;
+        div.innerHTML = '\u{1F6E1} <strong>CRITICAL FAIL</strong>: ' + (criticalError ? criticalError.message : 'Unknown');
         results.appendChild(div);
     }
 });
+
