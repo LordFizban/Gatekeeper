@@ -67,18 +67,22 @@ The v3.3 release focuses on the **Strategy Pattern** and the **Hardened Perimete
 ## 📜 Version History & Release Notes
 
 ### v3.3: Hardened Perimeter (Current)
-- **DOM Hardening**: XSS mitigation via sanitized rendering.
-- **Privacy Lock**: Moved to sessionStorage for automatic data purging.
+- **Value Delivery**: **Enterprise Data Protection**. Ensures no sensitive data is persisted on-disk and protects against XSS injection attacks.
+- **Security Check**: DOM Hardening via sanitized rendering.
+- **Privacy Lock**: Transitioned to `sessionStorage` for automatic cleanup.
 
 ### v3.2: Structure & Time Travel
-- **Modular Core**: Split into IronGuard.js, CognitiveCoach.js, AppController.js.
-- **Snapshot History**: Added a 5-step Undo stack.
-- **Visuals**: Fixed Turkish encoding and colorful emojis.
+- **Value Delivery**: **Sustainability & Flow Resilience**. Prevents rework via "Undo" and ensures the codebase can scale without technical debt.
+- **Modular Core**: Clean decoupling of logic engines.
+- **Snapshot History**: 5-step Undo stack for incident recovery.
+- **Visuals**: Full Turkish fidelity and premium emoji rendering.
 
 ### v3.1: Memory & Reliability
-- Added localStorage persistence (v3.3 has since upgraded this to sessionStorage).
-- Integrated test.html test suite.
+- **Value Delivery**: **Waste Reduction**. Prevents loss of progress via drafts and ensures build stability via automated tests.
+- **Persistence**: Added localStorage support (now upgraded to session-based in v3.3).
+- **Test Suite**: Integrated verification framework.
 
 ### v3.0: Dual-Mode Architecture
 - Introduction of the Shu-Ha-Ri multi-engine strategy.
+
 
