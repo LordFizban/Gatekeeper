@@ -1,11 +1,12 @@
-﻿
+
 // Global Error Handler for Test Runner
 window.onerror = function (msg, url, lineNo, columnNo, error) {
     const results = document.getElementById('results');
     if (results) {
         const div = document.createElement('div');
         div.className = 'test-item fail';
-        div.innerHTML = '\u{1F6E1} <strong>RUNTIME ERROR</strong>: <br> <small>:' + (e ? e.message : 'Unknown') + '</small>';
+        // FIX: Replaced 'e' with 'error'
+        div.innerHTML = '\u{1F6E1} <strong>RUNTIME ERROR</strong>: <br> <small>:' + (error ? error.message : 'Unknown') + '</small>';
         results.appendChild(div);
     }
     return false;
@@ -109,7 +110,7 @@ window.addEventListener('load', () => {
         // --- 4. HISTORY TESTS ---
         runTest('HIST: Stack Limit 5', () => {
             app.history = []; // reset
-            for(let i=1; i<=7; i++) {
+            for (let i = 1; i <= 7; i++) {
                 app.titleInput.value = "Title " + i;
                 app.contentInput.value = "Content " + i;
                 app.pushHistory(); // Simulate save trigger
@@ -120,21 +121,21 @@ window.addEventListener('load', () => {
         });
 
         runTest('HIST: Restore works', () => {
-             app.history = [];
-             app.titleInput.value = "Original";
-             app.contentInput.value = "Original Content";
-             app.pushHistory();
+            app.history = [];
+            app.titleInput.value = "Original";
+            app.contentInput.value = "Original Content";
+            app.pushHistory();
 
-             app.titleInput.value = "Modified";
-             app.contentInput.value = "Modified Content";
-             // Now pop explicitly
-             
-             app.popHistory();
-             assert(app.titleInput.value === "Original", "Should restore title to Original");
-             assert(app.contentInput.value === "Original Content", "Should restore content");
+            app.titleInput.value = "Modified";
+            app.contentInput.value = "Modified Content";
+            // Now pop explicitly
+
+            app.popHistory();
+            assert(app.titleInput.value === "Original", "Should restore title to Original");
+            assert(app.contentInput.value === "Original Content", "Should restore content");
         });
 
-                runTest('FIX: Coach Mode Ring should have correct offset', () => {
+        runTest('FIX: Coach Mode Ring should have correct offset', () => {
             const result = {
                 score: 46,
                 categories: {
@@ -149,7 +150,7 @@ window.addEventListener('load', () => {
             const circumference = radius * 2 * Math.PI;
             const expectedOffset = circumference - (46 / 100 * circumference);
             const actualOffset = parseFloat(ring.style.strokeDashoffset);
-            
+
             // Tolerance for float comparison
             assert(Math.abs(actualOffset - expectedOffset) < 1, "Offset mismatch!");
             assert(ring.style.strokeDasharray.includes(circumference.toString().split('.')[0]), "DashArray not set properly");
@@ -168,7 +169,7 @@ window.addEventListener('load', () => {
                 }]
             };
             app.renderGatekeeperResults(maliciousResult);
-            
+
             const list = document.getElementById('gk-feedback-list');
             const desc = list.querySelector('.seal-desc');
             // If textContent is used, it should literally show the tag
@@ -190,6 +191,19 @@ window.addEventListener('load', () => {
             assert(feedbackItem.querySelector('script') === null, "No script element should be injected");
         });
 
+        // --- 6. REGRESSION: TURKISH DEMO PARSING ---
+        runTest('FIX: Turkish Demo Value Check', () => {
+            // Manually test the regex against the string to verify regex fix
+            const trConfig = LOCALE_CONFIG['tr'];
+            const content = `Kayıtlı Kullanıcı Olarak,\nHesabıma Google ile giriş yapmak İstiyorum,\nBöylece şifre hatırlamak zorunda kalmadan hızlıca erişebilirim.\n\nKabul Kriterleri:\n- Kullanıcı "Google ile Giriş" butonunu görür.\n- Butona tıklandığında OAuth ekranı açılır.\n- Başarılı girişte ana sayfaya yönlendirilir.\n\nBağımlılıklar:\n- Yok\n\nTahmin:\n- 3 Puan\n\nKanıtlar:\n- Figma linki ektedir.`;
+
+            // Should match "şifre hatırlamak..."
+            assert(trConfig.patterns.valueClause.test(content), "Turkish Value Clause regex failed to match 'Böylece ...'");
+
+            // Also check format regex
+            assert(trConfig.patterns.format.test(content), "Turkish Format regex failed");
+        });
+
     } catch (criticalError) {
         const results = document.getElementById('results');
         const div = document.createElement('div');
@@ -198,4 +212,3 @@ window.addEventListener('load', () => {
         results.appendChild(div);
     }
 });
-

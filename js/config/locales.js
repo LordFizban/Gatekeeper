@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    LOCALE CONFIGURATION
    ========================================================================== */
 
@@ -116,17 +116,17 @@ const LOCALE_CONFIG = {
     },
     tr: {
         patterns: {
-            format: /(.+)\\s+Olarak\\s*,?\\s*(.+)\\s+İstiyorum\\s*,?\\s*Böylece\\s+(.+)/is,
-            lazyPersona: /(?<!Kayıtlı\\s+)(Kullanıcı|Yönetici|Admin)\\s+Olarak/i,
-            valueClause: /Böylece\\s+(.+)/i,
+            format: /(.+)\s+Olarak\s*,?\s*(.+)\s+İstiyorum\s*,?\s*Böylece\s+(.+)/is,
+            lazyPersona: /(?<!Kayıtlı\s+)(Kullanıcı|Yönetici|Admin)\s+Olarak/i,
+            valueClause: /Böylece\s+(.+)/i,
             acKeyword: /(Kabul Kriterleri|Kabul Şartları|ACs)/i,
             gherkin: /(Diyelim ki|Eğer ki|O zaman)/i,
-            listItems: /^\\s*(-|\\*|\\d+\\.|•)\\s+.+/gm,
+            listItems: /^\s*(-|\*|\d+\.|•)\s+.+/gm,
             terrain: /(Bağımlılıklar|Riskler|Teknik Notlar|Notlar|Ön koşullar)/i,
             terrainNone: /(Yok|None|Bulunmuyor)/i,
-            link: /(http|https|jira|confluence|\\.com|\\.org)/i,
+            link: /(http|https|jira|confluence|\.com|\.org)/i,
             cost: /(Tahmin|Puan|Efor|Karmaşıklık|Story Points)/i,
-            evidence: /(Figma|Mockup|Ekran|Screenshot|Görsel|Tasarım|Draw\\.io|Miro|Confluence|Analiz)/i
+            evidence: /(Figma|Mockup|Ekran|Screenshot|Görsel|Tasarım|Draw\.io|Miro|Confluence|Analiz)/i
         },
         keywords: [
             'gelir', 'kar', 'tasarruf', 'maliyet', 'kayıp', 'sadakat',
@@ -220,5 +220,3 @@ const LOCALE_CONFIG = {
         }
     }
 };
-
-
