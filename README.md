@@ -1,72 +1,72 @@
-﻿# The Iron Gatekeeper
+# The Iron Gatekeeper
 **Current Version:** v3.4 (Strategic Intelligence)
 
 **The Iron Gatekeeper** is a "Dr. Jekyll & Mr. Hyde" tool for Agile teams. It combines a strict **Enforcement Engine** (Gatekeeper) with a nuanced **Coaching Engine** (Story Coach) to support teams at every stage of maturity.
 
 ---
 
-## â˜¯ï¸ Philosophy: The Shu-Ha-Ri Model
+## ☯️ Philosophy: The Shu-Ha-Ri Model
 
 We believe that "one size fits all" tools fail because teams evolve.
-*   **Shu (å®ˆ) - Follow the Rule**: New teams need clear, rigid boundaries to feel safe. They need strict enforcement to learn the basics of a User Story.
-*   **Ha (ç ´) - Break the Rule**: Mature teams find strict rules insulting. They need coaching and scoring to help them refine quality, not just "pass" a check.
+*   **Shu (守) - Follow the Rule**: New teams need clear, rigid boundaries to feel safe. They need strict enforcement to learn the basics of a User Story.
+*   **Ha (破) - Break the Rule**: Mature teams find strict rules insulting. They need coaching and scoring to help them refine quality, not just "pass" a check.
 
 **The Iron Gatekeeper v3** solves this by offering two distinct modes in one application:
 
-### 1. ðŸ’ª Power Mode (Gatekeeper) - *The Shu*
+### 1. 💪 Power Mode (Gatekeeper) - *The Shu*
 *   **Logic**: Binary Pass/Fail Logic (The 6 Seals).
 *   **Theme**: Dark Fantasy / Strict Discipline.
 *   **Goal**: Stop "Lazy User Stories" from entering Refinement.
 
-### 2. ðŸ§  Coach Mode (Story Coach) - *The Ha/Ri*
+### 2. 🧠 Coach Mode (Story Coach) - *The Ha/Ri*
 *   **Logic**: Weighted Scoring (0-100%) + **Strategic Value Intelligence**.
 *   **Theme**: Modern SaaS / Nuanced Guidance.
 *   **Goal**: Improve clarity and value. "Good is the enemy of Great."
 
 ---
 
-## ðŸ‡¹ðŸ‡· TÃ¼rkÃ§e Ã–zet (Turkish Summary)
+## 🇹🇷 Türkçe Özet (Turkish Summary)
 
-**The Iron Gatekeeper**, Agile takÄ±mlarÄ±nÄ±n olgunluk seviyesine gÃ¶re ÅŸekil deÄŸiÅŸtiren Ã§ift modlu bir "HazÄ±r TanÄ±mÄ±" (DoR) aracÄ±dÄ±r.
+**The Iron Gatekeeper**, Agile takımlarının olgunluk seviyesine göre şekil değiştiren çift modlu bir "Hazır Tanımı" (DoR) aracıdır.
 
 ### Modlar
-1.  **ðŸ’ª GÃ¼Ã§ Modu (BekÃ§i)**: Sert kurallar. "6 MÃ¼hÃ¼r" sistemi ile hikayeleri kontrol eder. Eksik varsa hikayeyi **REDDEDER**. Disiplin saÄŸlar.
-2.  **ðŸ§  KoÃ§ Modu**: Puanlama sistemi. Hikayeyi 0-100 arasÄ±nda puanlar.
-    *   **YENÄ°: Stratejik DeÄŸer**: Hikayenizin tÃ¼rÃ¼nÃ¼ (Ä°novasyon, Verimlilik vb.) seÃ§in.
-    *   **AkÄ±llÄ± DoÄŸrulama**: SeÃ§tiÄŸiniz deÄŸeri kanÄ±tlarsanÄ±z (Ã¶rn. Verimlilik iÃ§in "%" veya "tasarruf" yazmak) **+10 Bonus Puan** kazanÄ±rsÄ±nÄ±z.
+1.  **💪 Güç Modu (Bekçi)**: Sert kurallar. "6 Mühür" sistemi ile hikayeleri kontrol eder. Eksik varsa hikayeyi **REDDEDER**. Disiplin sağlar.
+2.  **🧠 Koç Modu**: Puanlama sistemi. Hikayeyi 0-100 arasında puanlar.
+    *   **YENİ: Stratejik Değer**: Hikayenizin türünü (İnovasyon, Verimlilik vb.) seçin.
+    *   **Akıllı Doğrulama**: Seçtiğiniz değeri kanıtlarsanız (örn. Verimlilik için "%" veya "tasarruf" yazmak) **+10 Bonus Puan** kazanırsınız.
 
-### GÃ¼ncel Ã–zellikler (v3.4)
-*   **YerelleÅŸtirilmiÅŸ DeÄŸer SeÃ§imi**: Stratejik DeÄŸer menÃ¼sÃ¼ artÄ±k tamamen TÃ¼rkÃ§e.
-*   **Unicode DesteÄŸi**: TÃ¼m TÃ¼rkÃ§e karakterler sorunsuz gÃ¶rÃ¼ntÃ¼lenir.
+### Güncel Özellikler (v3.4)
+*   **Yerelleştirilmiş Değer Seçimi**: Stratejik Değer menüsü artık tamamen Türkçe.
+*   **Unicode Desteği**: Tüm Türkçe karakterler sorunsuz görüntülenir.
 
 ---
 
-## ðŸš€ Key Features
+## 🚀 Key Features
 
 *   **Dual-Mode Engine**: Instantly toggle between "Power" and "Coach" modes without losing data.
 *   **Zero-Backend**: 100% Client-side. No data is ever sent to a server. Secure by design.
 *   **Jira Integration**: "Copy to Jira" button formats your story with headers and bullets automatically.
 
-### âœ¨ NEW: Strategic Value Intelligence (Coach Mode)
+### ✨ NEW: Strategic Value Intelligence (Coach Mode)
 We declare *why* we are building features. Select a Value Type to enable **Smart Validation**:
-*   **ðŸš€ Innovation / Growth**: Focus on "new", "launch", "feature".
-*   **âš¡ Efficiency / Cost Cut**: Focus on "%", "save", "reduce".
-*   **ðŸ›¡ï¸ Retention / Fix**: Focus on "bug", "fix", "stable".
-*   **âš–ï¸ Compliance / Mandatory**: Focus on "legal", "audit", "rule".
+*   **🚀 Innovation / Growth**: Focus on "new", "launch", "feature".
+*   **⚡ Efficiency / Cost Cut**: Focus on "%", "save", "reduce".
+*   **🛡️ Retention / Fix**: Focus on "bug", "fix", "stable".
+*   **⚖️ Compliance / Mandatory**: Focus on "legal", "audit", "rule".
 *   *Bonus Points awarded if your 'So that' clause matches your intent!*
 
-### âš”ï¸ The 6 Seals (Power Mode)
+### ⚔️ The 6 Seals (Power Mode)
 In **Power Mode**, we enforce six strict mandatory criteria:
-1. **Identity ðŸ†”**: Title > 10 chars.
-2. **Value ðŸ’Ž**: Must contain "So that" / "BÃ¶ylece".
-3. **Victory âš”ï¸**: Minimum 3 AC bullets or Gherkin.
-4. **Terrain â›°ï¸**: Dependency links.
-5. **Cost ðŸ’°**: Estimation/Points.
-6. **Evidence ðŸ“œ**: Figma/Mockup links.
+1. **Identity 🆔**: Title > 10 chars.
+2. **Value 💎**: Must contain "So that" / "Böylece".
+3. **Victory ⚔️**: Minimum 3 AC bullets or Gherkin.
+4. **Terrain ⛰️**: Dependency links.
+5. **Cost 💰**: Estimation/Points.
+6. **Evidence 📜**: Figma/Mockup links.
 
 ---
 
-## ðŸ—ï¸ Architecture & Security
+## 🏗️ Architecture & Security
 
 The v3 architecture focuses on the **Strategy Pattern** and the **Hardened Perimeter**:
 *   **AppController**: Manages state (Mode, Locale) and sanitized DOM updates.
@@ -76,7 +76,7 @@ The v3 architecture focuses on the **Strategy Pattern** and the **Hardened Perim
 
 ---
 
-## ðŸ“œ Version History & Release Notes
+## 📜 Version History & Release Notes
 
 ### v3.4: Strategic Intelligence (Current)
 - **Value Delivery**: **Strategic Alignment**. Teams can now categorize value (Innovation vs Efficiency) and get scored on their alignment.
