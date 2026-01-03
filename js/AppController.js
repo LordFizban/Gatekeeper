@@ -10,6 +10,7 @@ class AppController {
         this.titleInput = document.getElementById('story-title');
         this.contentInput = document.getElementById('story-content');
         this.modeToggle = document.getElementById('mode-toggle-input');
+        this.valueTypeInput = document.getElementById('value-type-select');
 
         // Engines
         this.ironGuard = new IronGuard(this.currentLocale);
@@ -197,6 +198,10 @@ class AppController {
             const titleSpan = document.querySelector('h1 .gradient-text');
             if (titleSpan) titleSpan.dataset.i18n = 'titleSuffix_GK';
 
+            // Hide Value Type (Coach feature)
+            const valContainer = document.getElementById('value-type-container');
+            if (valContainer) valContainer.classList.add('hidden');
+
         } else {
             body.classList.remove('mode-gatekeeper');
             body.classList.add('mode-coach');
@@ -206,6 +211,10 @@ class AppController {
 
             // Hide GK Results if open
             if (gkPanel) gkPanel.classList.add('hidden');
+
+            // Show Value Type
+            const valContainer = document.getElementById('value-type-container');
+            if (valContainer) valContainer.classList.remove('hidden');
 
             const titleSpan = document.querySelector('h1 .gradient-text');
             if (titleSpan) titleSpan.dataset.i18n = 'titleSuffix_Coach';
@@ -318,7 +327,7 @@ class AppController {
         // Reset animation
         const radius = ring.r.baseVal.value;
         const circumference = radius * 2 * Math.PI;
-        ring.style.strokeDasharray = `${circumference} ${circumference}`;
+        ring.style.strokeDasharray = `${circumference}`;
 
         const offset = circumference - ((result.score / 100) * circumference);
         ring.style.strokeDashoffset = offset;
@@ -378,16 +387,50 @@ class AppController {
         // Load a generic good story suitable for both
         const isTr = this.currentLocale === 'tr';
         if (isTr) {
-            this.titleInput.value = "Google ile Giriş Entegrasyonu";
-            this.contentInput.value = `Kayıtlı Kullanıcı Olarak,\nHesabıma Google ile giriş yapmak İstiyorum,\nBöylece şifre hatırlamak zorunda kalmadan hızlıca erişebilirim.\n\nKabul Kriterleri:\n- Kullanıcı "Google ile Giriş" butonunu görür.\n- Butona tıklandığında OAuth ekranı açılır.\n- Başarılı girişte ana sayfaya yönlendirilir.\n\nBağımlılıklar:\n- Yok\n\nTahmin:\n- 3 Puan\n\nKanıtlar:\n- Figma linki ektedir.`;
+            this.titleInput.value = "Google ile Giri\u015f Entegrasyonu";
+            this.contentInput.value = `Kay\u0131tl\u0131 Kullan\u0131c\u0131 Olarak,
+Hesab\u0131ma Google ile giri\u015f yapmak \u0130stiyorum,
+B\u00f6ylece \u015fifre hat\u0131rlamak zorunda kalmadan h\u0131zl\u0131ca eri\u015febilirim.
+
+Kabul Kriterleri:
+- Kullan\u0131c\u0131 "Google ile Giri\u015f" butonunu g\u00f6r\u00fcr.
+- Butona t\u0131kland\u0131\u011f\u0131nda OAuth ekran\u0131 a\u00e7\u0131l\u0131r.
+- Ba\u015far\u0131l\u0131 giri\u015fte ana sayfaya y\u00f6nlendirilir.
+
+Ba\u011f\u0131ml\u0131l\u0131klar:
+- Yok
+
+Tahmin:
+- 3 Puan
+
+Kan\u0131tlar:
+- Figma linki ektedir.`;
         } else {
             this.titleInput.value = "Google Login Integration";
-            this.contentInput.value = `As a Registered User,\nI want to login with my Google account,\nSo that I can access the app quickly without remembering passwords.\n\nAcceptance Criteria:\n- User sees "Login with Google" button.\n- Clicking opens OAuth screen.\n- Success redirects to dashboard.\n\nDependencies:\n- None\n\nEstimation:\n- 3 Points\n\nEvidence:\n- See Figma.`;
+            this.contentInput.value = `As a Registered User,
+I want to login with my Google account,
+So that I can access the app quickly without remembering passwords.
+
+Acceptance Criteria:
+- User sees "Login with Google" button.
+- Clicking opens OAuth screen.
+- Success redirects to dashboard.
+
+Dependencies:
+- None
+
+Estimation:
+- 3 Points
+
+Evidence:
+- See Figma.`;
         }
         // Check strict boxes
         document.getElementById('check-refinement').checked = true;
         document.getElementById('check-alignment').checked = true;
 
+        // v3.4 Demo: Set Value Type
+        if (this.valueTypeInput) this.valueTypeInput.value = 'efficiency';
         this.runAnalysis();
     }
 
@@ -401,15 +444,10 @@ class AppController {
         const content = this.contentInput.value;
         const title = this.titleInput.value;
         if (!content) return;
-        let jiraBody = `h2. Story: \n\n` + content;
+        let jiraBody = "h2. Story: \n\n" + content;
         try {
             await navigator.clipboard.writeText(jiraBody);
             alert(LOCALE_CONFIG[this.currentLocale].ui.btnJiraCopied);
         } catch (e) { alert("Error copying"); }
     }
 }
-
-
-
-
-

@@ -47,6 +47,19 @@
                         placeholder="e.g., User Login with Google Auth">
                 </div>
 
+                <div class="input-group" id="value-type-container">
+                    <label for="value-type-select" data-i18n="labelValueType">Value Type (Strategic)</label>
+                    <div class="select-wrapper">
+                        <select id="value-type-select">
+                            <option value="" disabled selected data-i18n="optSelectValue">Select Value Type...</option>
+                            <option value="innovation" data-i18n="type_innovation">🚀 Innovation / Growth</option>
+                            <option value="retention" data-i18n="type_retention">🛡️ Retention / Fix</option>
+                            <option value="compliance" data-i18n="type_compliance">⚖️ Compliance / Mandatory</option>
+                            <option value="efficiency" data-i18n="type_efficiency">⚡ Efficiency / Cost Cut</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="input-group">
                     <label for="story-content" data-i18n="labelContent">Story Definition</label>
                     <div class="hint-text small-hint" data-i18n="labelAC">(Must include: So that, ACs, Dependencies,
@@ -190,5 +203,3 @@
 </body>
 
 </html>
-
-

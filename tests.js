@@ -1,3 +1,15 @@
+function testUI() {
+    console.log("TEST 0: UI Existence Check...");
+    const requiredIds = ['story-title', 'story-content', 'value-type-select', 'analyze-btn'];
+    const missing = requiredIds.filter(id => !document.getElementById(id));
+    
+    if (missing.length > 0) {
+        throw new Error("TEST 0 FAIL: Missing critical UI elements: " + missing.join(", "));
+    }
+    console.log("TEST 0 PASS");
+    return true;
+}
+
 
 // Global Error Handler for Test Runner
 window.onerror = function (msg, url, lineNo, columnNo, error) {
@@ -59,6 +71,9 @@ window.addEventListener('load', () => {
 
         // Initialize App
         const app = new AppController();
+
+        // --- 0. UI CHECKS ---
+        runTest('UI: Elements Exist', testUI);
 
         // --- 1. IRON GUARD TESTS ---
         runTest('IG: Clean Story should PASS', () => {

@@ -1,88 +1,99 @@
 ﻿# The Iron Gatekeeper
-**Current Version:** v3.3 (Hardened Security)
+**Current Version:** v3.4 (Strategic Intelligence)
 
 **The Iron Gatekeeper** is a "Dr. Jekyll & Mr. Hyde" tool for Agile teams. It combines a strict **Enforcement Engine** (Gatekeeper) with a nuanced **Coaching Engine** (Story Coach) to support teams at every stage of maturity.
 
 ---
 
-## ☯️ Philosophy: The Shu-Ha-Ri Model
+## â˜¯ï¸ Philosophy: The Shu-Ha-Ri Model
 
 We believe that "one size fits all" tools fail because teams evolve.
-*   **Shu (守) - Follow the Rule**: New teams need clear, rigid boundaries to feel safe. They need strict enforcement to learn the basics of a User Story.
-*   **Ha (破) - Break the Rule**: Mature teams find strict rules insulting. They need coaching and scoring to help them refine quality, not just "pass" a check.
+*   **Shu (å®ˆ) - Follow the Rule**: New teams need clear, rigid boundaries to feel safe. They need strict enforcement to learn the basics of a User Story.
+*   **Ha (ç ´) - Break the Rule**: Mature teams find strict rules insulting. They need coaching and scoring to help them refine quality, not just "pass" a check.
 
 **The Iron Gatekeeper v3** solves this by offering two distinct modes in one application:
 
-### 1. 💪 Power Mode (Gatekeeper) - *The Shu*
+### 1. ðŸ’ª Power Mode (Gatekeeper) - *The Shu*
 *   **Logic**: Binary Pass/Fail Logic (The 6 Seals).
 *   **Theme**: Dark Fantasy / Strict Discipline.
 *   **Goal**: Stop "Lazy User Stories" from entering Refinement.
 
-### 2. 🧠 Coach Mode (Story Coach) - *The Ha/Ri*
-*   **Logic**: Weighted Scoring (0-100%).
+### 2. ðŸ§  Coach Mode (Story Coach) - *The Ha/Ri*
+*   **Logic**: Weighted Scoring (0-100%) + **Strategic Value Intelligence**.
 *   **Theme**: Modern SaaS / Nuanced Guidance.
 *   **Goal**: Improve clarity and value. "Good is the enemy of Great."
 
 ---
 
-## 🇹🇷 Türkçe Özet (Turkish Summary)
+## ðŸ‡¹ðŸ‡· TÃ¼rkÃ§e Ã–zet (Turkish Summary)
 
-**The Iron Gatekeeper**, Agile takımlarının olgunluk seviyesine göre şekil değiştiren çift modlu bir "Hazır Tanımı" (DoR) aracıdır.
+**The Iron Gatekeeper**, Agile takÄ±mlarÄ±nÄ±n olgunluk seviyesine gÃ¶re ÅŸekil deÄŸiÅŸtiren Ã§ift modlu bir "HazÄ±r TanÄ±mÄ±" (DoR) aracÄ±dÄ±r.
 
 ### Modlar
-1.  **💪 Güç Modu (Bekçi)**: Sert kurallar. "6 Mühür" sistemi ile hikayeleri kontrol eder. Eksik varsa hikayeyi **REDDEDER**. Disiplin sağlar.
-2.  **🧠 Koç Modu**: Puanlama sistemi. Hikayeyi 0-100 arasında puanlar. Yapıcı geri bildirimler verir. Kaliteyi artırır.
+1.  **ðŸ’ª GÃ¼Ã§ Modu (BekÃ§i)**: Sert kurallar. "6 MÃ¼hÃ¼r" sistemi ile hikayeleri kontrol eder. Eksik varsa hikayeyi **REDDEDER**. Disiplin saÄŸlar.
+2.  **ðŸ§  KoÃ§ Modu**: Puanlama sistemi. Hikayeyi 0-100 arasÄ±nda puanlar.
+    *   **YENÄ°: Stratejik DeÄŸer**: Hikayenizin tÃ¼rÃ¼nÃ¼ (Ä°novasyon, Verimlilik vb.) seÃ§in.
+    *   **AkÄ±llÄ± DoÄŸrulama**: SeÃ§tiÄŸiniz deÄŸeri kanÄ±tlarsanÄ±z (Ã¶rn. Verimlilik iÃ§in "%" veya "tasarruf" yazmak) **+10 Bonus Puan** kazanÄ±rsÄ±nÄ±z.
 
-### Güncel Güvenlik (v3.3)
-Analiz sonuçları artık **XSS saldırılarına karşı korumalıdır** ve verileriniz gizlilik için sadece **oturum bazlı (sessionStorage)** saklanır.
+### GÃ¼ncel Ã–zellikler (v3.4)
+*   **YerelleÅŸtirilmiÅŸ DeÄŸer SeÃ§imi**: Stratejik DeÄŸer menÃ¼sÃ¼ artÄ±k tamamen TÃ¼rkÃ§e.
+*   **Unicode DesteÄŸi**: TÃ¼m TÃ¼rkÃ§e karakterler sorunsuz gÃ¶rÃ¼ntÃ¼lenir.
 
 ---
 
-## 🚀 Key Features
+## ðŸš€ Key Features
 
 *   **Dual-Mode Engine**: Instantly toggle between "Power" and "Coach" modes without losing data.
 *   **Zero-Backend**: 100% Client-side. No data is ever sent to a server. Secure by design.
 *   **Jira Integration**: "Copy to Jira" button formats your story with headers and bullets automatically.
 
-### ⚔️ The 6 Seals (Power Mode)
+### âœ¨ NEW: Strategic Value Intelligence (Coach Mode)
+We declare *why* we are building features. Select a Value Type to enable **Smart Validation**:
+*   **ðŸš€ Innovation / Growth**: Focus on "new", "launch", "feature".
+*   **âš¡ Efficiency / Cost Cut**: Focus on "%", "save", "reduce".
+*   **ðŸ›¡ï¸ Retention / Fix**: Focus on "bug", "fix", "stable".
+*   **âš–ï¸ Compliance / Mandatory**: Focus on "legal", "audit", "rule".
+*   *Bonus Points awarded if your 'So that' clause matches your intent!*
+
+### âš”ï¸ The 6 Seals (Power Mode)
 In **Power Mode**, we enforce six strict mandatory criteria:
-1. **Identity 🆔**: Title > 10 chars.
-2. **Value 💎**: Must contain "So that" / "Böylece".
-3. **Victory ⚔️**: Minimum 3 AC bullets or Gherkin.
-4. **Terrain ⛰️**: Dependency links.
-5. **Cost 💰**: Estimation/Points.
-6. **Evidence 📜**: Figma/Mockup links.
+1. **Identity ðŸ†”**: Title > 10 chars.
+2. **Value ðŸ’Ž**: Must contain "So that" / "BÃ¶ylece".
+3. **Victory âš”ï¸**: Minimum 3 AC bullets or Gherkin.
+4. **Terrain â›°ï¸**: Dependency links.
+5. **Cost ðŸ’°**: Estimation/Points.
+6. **Evidence ðŸ“œ**: Figma/Mockup links.
 
 ---
 
-## 🏗️ Architecture & Security
+## ðŸ—ï¸ Architecture & Security
 
-The v3.3 release focuses on the **Strategy Pattern** and the **Hardened Perimeter**:
+The v3 architecture focuses on the **Strategy Pattern** and the **Hardened Perimeter**:
 *   **AppController**: Manages state (Mode, Locale) and sanitized DOM updates.
 *   **Sanitization**: All output is rendered via textContent (DOM Hardening).
 *   **Privacy**: State is isolated to sessionStorage.
+*   **Unicode-Safe**: Full support for international character sets via explicit escape sequences.
 
 ---
 
-## 📜 Version History & Release Notes
+## ðŸ“œ Version History & Release Notes
 
-### v3.3: Hardened Perimeter (Current)
+### v3.4: Strategic Intelligence (Current)
+- **Value Delivery**: **Strategic Alignment**. Teams can now categorize value (Innovation vs Efficiency) and get scored on their alignment.
+- **Smart Validation**: Scoring engine now awards bonuses for proving value intent.
+- **Bulletproof Localization**: Rewrote text handling with Unicode sequences to permanently solve character encoding issues (TR).
+- **UI Refinement**: "Value Type" dropdown is context-aware and hides in Gatekeeper mode to reduce noise.
+
+### v3.3: Hardened Perimeter
 - **Value Delivery**: **Enterprise Data Protection**. Ensures no sensitive data is persisted on-disk and protects against XSS injection attacks.
 - **Security Check**: DOM Hardening via sanitized rendering.
-- **Privacy Lock**: Transitioned to `sessionStorage` for automatic cleanup.
+- **Privacy Lock**: Transitioned to sessionStorage for automatic cleanup.
 
 ### v3.2: Structure & Time Travel
 - **Value Delivery**: **Sustainability & Flow Resilience**. Prevents rework via "Undo" and ensures the codebase can scale without technical debt.
 - **Modular Core**: Clean decoupling of logic engines.
 - **Snapshot History**: 5-step Undo stack for incident recovery.
-- **Visuals**: Full Turkish fidelity and premium emoji rendering.
 
 ### v3.1: Memory & Reliability
 - **Value Delivery**: **Waste Reduction**. Prevents loss of progress via drafts and ensures build stability via automated tests.
 - **Persistence**: Added localStorage support (now upgraded to session-based in v3.3).
-- **Test Suite**: Integrated verification framework.
-
-### v3.0: Dual-Mode Architecture
-- Introduction of the Shu-Ha-Ri multi-engine strategy.
-
-

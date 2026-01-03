@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    LOCALE CONFIGURATION
    ========================================================================== */
 
@@ -13,7 +13,7 @@ const LOCALE_CONFIG = {
             valueClause: /So that\s+(.+)/i,
             acKeyword: /(Acceptance Criteria|ACs|Success Criteria)/i,
             gherkin: /(Given|When|Then)\s+/i,
-            listItems: /^\s*(-|\*|\d+\.|•)\s+.+/gm, // stricter start-of-line check for GK, general for Coach
+            listItems: /^\s*(-|\*|\d+\.|\u2022)\s*.+/gm, // stricter start-of-line check for GK, general for Coach
 
             terrain: /(Dependencies|Risks|Technical Notes|Notes|Pre-requisites)/i,
             terrainNone: /(None|N\/A|No dependencies)/i,
@@ -58,7 +58,8 @@ const LOCALE_CONFIG = {
             formatFail: "Incorrect Format", formatFailMsg: "Try using: 'As a... I want... So that...'.",
             acPass: "AC Section Found", acPassMsg: "Explicit Acceptance Criteria section detected.",
             acFail: "Missing ACs", acFailMsg: "No 'Acceptance Criteria' section found.",
-            acDetailed: "Detailed Criteria",
+                        acDetailed: "Detailed Criteria",
+            acFoundItems: "Found {0} items.",
             acGherkin: "Gherkin Syntax", acGherkinMsg: "Uses Behavior Driven Development (BDD) style.",
             acSparse: "Sparse Criteria", acSparseMsg: "Found very few acceptance criteria.",
             acUnhappy: "Unhappy Path", acUnhappyMsg: "Could not detect clear list items.",
@@ -110,110 +111,127 @@ const LOCALE_CONFIG = {
             modeGK: "\u{1F4AA}\u{FE0F} Power",
             modeCoach: "\u{1F9E0}\u{FE0F} Coach",
 
+            // Value Type Options
+            labelValueType: "Strategic Value",
+            optSelectValue: "Select Value Type...",
+            type_innovation: "\u{1F680} Innovation / Growth",
+            type_retention: "\u{1F6E1}\u{FE0F} Retention / Fix",
+            type_compliance: "\u{2696}\u{FE0F} Compliance / Mandatory",
+            type_efficiency: "\u{26A1} Efficiency / Cost Cut",
+
             // History
             btnUndo: "Undo \u{23EA}"
         }
     },
     tr: {
         patterns: {
-            format: /(.+)\s+Olarak\s*,?\s*(.+)\s+İstiyorum\s*,?\s*Böylece\s+(.+)/is,
-            lazyPersona: /(?<!Kayıtlı\s+)(Kullanıcı|Yönetici|Admin)\s+Olarak/i,
-            valueClause: /Böylece\s+(.+)/i,
-            acKeyword: /(Kabul Kriterleri|Kabul Şartları|ACs)/i,
-            gherkin: /(Diyelim ki|Eğer ki|O zaman)/i,
-            listItems: /^\s*(-|\*|\d+\.|•)\s+.+/gm,
-            terrain: /(Bağımlılıklar|Riskler|Teknik Notlar|Notlar|Ön koşullar)/i,
+            format: /(.+)\s+Olarak\s*,?\s*(.+?)(?:\s+\u0130stiyorum)?\s*,?\s*B\u00f6ylece\s+(.+)/is,
+            lazyPersona: /(?<!Kay\u0131tl\u0131\s+)(Kullan\u0131c\u0131|Y\u00f6netici|Admin)\s+Olarak/i,
+            valueClause: /B\u00f6ylece\s+(.+)/i,
+            acKeyword: /(Kabul Kriterleri|Kabul \u015eartlar\u0131|ACs)/i,
+            gherkin: /(Diyelim ki|E\u011fer ki|O zaman)/i,
+            listItems: /^\s*(-|\*|\d+\.|\u2022)\s*.+/gm,
+            terrain: /(Ba\u011f\u0131ml\u0131l\u0131klar|Riskler|Teknik Notlar|Notlar|\u00d6n ko\u015fullar)/i,
             terrainNone: /(Yok|None|Bulunmuyor)/i,
             link: /(http|https|jira|confluence|\.com|\.org)/i,
-            cost: /(Tahmin|Puan|Efor|Karmaşıklık|Story Points)/i,
-            evidence: /(Figma|Mockup|Ekran|Screenshot|Görsel|Tasarım|Draw\.io|Miro|Confluence|Analiz)/i
+            cost: /(Tahmin|Puan|Efor|Karma\u015f\u0131kl\u0131k|Story Points)/i,
+            evidence: /(Figma|Mockup|Ekran|Screenshot|G\u00f6rsel|Tasar\u0131m|Draw\.io|Miro|Confluence|Analiz)/i
         },
         keywords: [
-            'gelir', 'kar', 'tasarruf', 'maliyet', 'kayıp', 'sadakat',
-            'dönüşüm', 'uyumluluk', 'yasal', 'denetim', 'performans',
-            'gecikme', 'ölçek', 'kullanıcı deneyimi', 'ux', 'verimlilik',
-            'otomasyon', 'manuel', 'zaman', 'risk', 'hız', 'güvenlik'
+            'gelir', 'kar', 'tasarruf', 'maliyet', 'kay\u0131p', 'sadakat',
+            'd\u00f6n\u00fc\u015f\u00fcm', 'uyumluluk', 'yasal', 'denetim', 'performans',
+            'gecikme', '\u00f6l\u00e7ek', 'kullan\u0131c\u0131 deneyimi', 'ux', 'verimlilik',
+            'otomasyon', 'manuel', 'zaman', 'risk', 'h\u0131z', 'g\u00fcvenlik'
         ],
         messages: {
             // Gatekeeper
-            seal0Name: "Kimlik Mührü", seal0Pass: "Başlık Geçerli", seal0Fail: "REDDEDİLDİ: Geçersiz Başlık",
-            seal0MsgPass: "Başlık net ve açıklayıcı.", seal0MsgFail: "Başlık en az 10 karakter olmalıdır.",
+            seal0Name: "Kimlik M\u00fchr\u00fc", seal0Pass: "Ba\u015fl\u0131k Ge\u00e7erli", seal0Fail: "REDDED\u0130LD\u0130: Ge\u00e7ersiz Ba\u015fl\u0131k",
+            seal0MsgPass: "Ba\u015fl\u0131k net ve a\u00e7\u0131klay\u0131c\u0131.", seal0MsgFail: "Ba\u015fl\u0131k en az 10 karakter olmal\u0131d\u0131r.",
 
-            seal1Names: "Değer Mührü", seal1Pass: "Değer Tanımlandı", seal1Fail: "REDDEDİLDİ: Değer İfadesi Eksik",
-            seal1MsgPass: "'Böylece' ifadesi mevcut.", seal1MsgFail: "Bir 'Böylece' (So that) cümlesi İÇERMELİDİR.",
+            seal1Names: "De\u011fer M\u00fchr\u00fc", seal1Pass: "De\u011fer Tan\u0131mland\u0131", seal1Fail: "REDDED\u0130LD\u0130: De\u011fer \u0130fadesi Eksik",
+            seal1MsgPass: "'B\u00f6ylece' ifadesi mevcut.", seal1MsgFail: "Bir 'B\u00f6ylece' (So that) c\u00fcmlesi \u0130\u00c7ERMEL\u0130D\u0130R.",
 
-            seal2Name: "Zafer Mührü", seal2Pass: "Zafer Koşulları Sağlandı", seal2Fail: "REDDEDİLDİ: Zafer Koşulları Belirsiz",
-            seal2MsgPass: "Kabul Kriterleri doğru tanımlanmış.", seal2MsgFail: "'Kabul Kriterleri' VE (3+ madde VEYA Gherkin) olmalıdır.",
+            seal2Name: "Zafer M\u00fchr\u00fc", seal2Pass: "Zafer Ko\u015fullar\u0131 Sa\u011fland\u0131", seal2Fail: "REDDED\u0130LD\u0130: Zafer Ko\u015fullar\u0131 Belirsiz",
+            seal2MsgPass: "Kabul Kriterleri do\u011fru tan\u0131mlanm\u0131\u015f.", seal2MsgFail: "'Kabul Kriterleri' VE (3+ madde VEYA Gherkin) olmal\u0131d\u0131r.",
 
-            seal3Name: "Arazi Mührü", seal3Pass: "Arazi Tarandı", seal3Fail: "REDDEDİLDİ: Hatalı Bağımlılık",
-            seal3MsgPass: "Bağımlılık bölümü geçerli (Link var veya 'Yok').", seal3MsgFail: "Bağımlılıklar bir LİNK içermeli veya 'Yok' yazılmalı.",
-            seal3Missing: "REDDEDİLDİ: Arazi Bölümü Eksik", seal3MsgMissing: "'Bağımlılıklar' bölümü eklenmelidir.",
+            seal3Name: "Arazi M\u00fchr\u00fc", seal3Pass: "Arazi Tarand\u0131", seal3Fail: "REDDED\u0130LD\u0130: Hatal\u0131 Ba\u011f\u0131ml\u0131l\u0131k",
+            seal3MsgPass: "Ba\u011f\u0131ml\u0131l\u0131k b\u00f6l\u00fcm\u00fc ge\u00e7erli (Link var veya 'Yok').", seal3MsgFail: "Ba\u011f\u0131ml\u0131l\u0131klar bir L\u0130NK i\u00e7ermeli veya 'Yok' yaz\u0131lmal\u0131.",
+            seal3Missing: "REDDED\u0130LD\u0130: Arazi B\u00f6l\u00fcm\u00fc Eksik", seal3MsgMissing: "'Ba\u011f\u0131ml\u0131l\u0131klar' b\u00f6l\u00fcm\u00fc eklenmelidir.",
 
-            seal4Name: "Maliyet Mührü", seal4Pass: "Maliyet Tahmin Edildi", seal4Fail: "REDDEDİLDİ: Tahmin Eksik",
-            seal4MsgPass: "Tahmin/Puan bölümü bulundu.", seal4MsgFail: "'Tahmin' veya 'Puan' bölümü eklenmelidir.",
+            seal4Name: "Maliyet M\u00fchr\u00fc", seal4Pass: "Maliyet Tahmin Edildi", seal4Fail: "REDDED\u0130LD\u0130: Tahmin Eksik",
+            seal4MsgPass: "Tahmin/Puan b\u00f6l\u00fcm\u00fc bulundu.", seal4MsgFail: "'Tahmin' veya 'Puan' b\u00f6l\u00fcm\u00fc eklenmelidir.",
 
-            seal5Name: "Kanıt Mührü", seal5Pass: "Kanıtlar Tamam", seal5Fail: "REDDEDİLDİ: Kanıt Eksik",
-            seal5MsgPass: "Tasarım/Doküman referansı bulundu.", seal5MsgFail: "Figma, Ekran, Confluence veya Analiz'den bahsedilmeli.",
+            seal5Name: "Kan\u0131t M\u00fchr\u00fc", seal5Pass: "Kan\u0131tlar Tamam", seal5Fail: "REDDED\u0130LD\u0130: Kan\u0131t Eksik",
+            seal5MsgPass: "Tasar\u0131m/Dok\u00fcman referans\u0131 bulundu.", seal5MsgFail: "Figma, Ekran, Confluence veya Analiz'den bahsedilmeli.",
 
-            ritualNames: "Ritüel Kontrolü", ritualFail: "REDDEDİLDİ: Ritüeller Tamamlanmadı", ritualMsgFail: "Refinement ve Hizalanma onaylanmalı.",
+            ritualNames: "Rit\u00fcel Kontrol\u00fc", ritualFail: "REDDED\u0130LD\u0130: Rit\u00fceller Tamamlanmad\u0131", ritualMsgFail: "Refinement ve Hizalanma onaylanmal\u0131.",
 
             // Coach
-            titlePass: "Başlık Mevcut", titlePassMsg: "Açıklayıcı bir başlık sağladığınız için teşekkürler.",
-            titleFail: "Başlık Eksik", titleFailMsg: "Net bir başlık hikayeyi tanımlamaya yardımcı olur.",
-            formatPass: "Standart Format", formatPassMsg: "Standart şablona uyuyor.",
-            formatFail: "Hatalı Format", formatFailMsg: "Şunu deneyin: '[Rol] Olarak, [İstek] İstiyorum, Böylece [Fayda]'.",
-            acPass: "Kabul Kriterleri Bulundu", acPassMsg: "Açık bir Kabul Kriterleri bölümü tespit edildi.",
-            acFail: "Kabul Kriterleri Eksik", acFailMsg: "'Kabul Kriterleri' bölümü bulunamadı.",
-            acDetailed: "Detaylı Kriterler",
-            acGherkin: "Gherkin Sözdizimi", acGherkinMsg: "Davranış Odaklı Geliştirme (BDD) stili kullanılıyor.",
-            acSparse: "Seyrek Kriterler", acSparseMsg: "Çok az kabul kriteri bulundu.",
-            acUnhappy: "Mutsuz Yol", acUnhappyMsg: "Net madde işaretleri tespit edilemedi.",
-            lenShort: "Çok Kısa", lenShortMsg: "Hikaye hazır olmak için çok kısa görünüyor.",
-            lenLong: "Çok Uzun", lenLongMsg: "Hikaye çok karmaşık olabilir. Bölmeyi düşünün.",
-            lenGood: "İyi Uzunluk", lenGoodMsg: "Hikaye uzunluğu makul.",
-            personaFail: "Muğlak Persona", personaFailMsg: "'Kullanıcı' gibi genel personalardan kaçının.",
-            personaPass: "Belirgin Persona", personaPassMsg: "Belirgin bir persona kullandığınız için tebrikler.",
-            valueFail: "Değer Eksik", valueFailMsg: "'Böylece' ifadesi çok önemlidir.",
-            valueStrong: "Güçlü İş Değeri",
-            valueWeak: "Zayıf Değer", valueWeakMsg: "Değer ifadesi çok muğlak.",
-            valueGeneric: "Genel Değer", valueGenericMsg: "Değer ifadesi mevcut ama daha güçlü olabilir."
+            titlePass: "Ba\u015fl\u0131k Mevcut", titlePassMsg: "A\u00e7\u0131klay\u0131c\u0131 bir ba\u015fl\u0131k sa\u011flad\u0131\u011f\u0131n\u0131z i\u00e7in te\u015fekk\u00fcrler.",
+            titleFail: "Ba\u015fl\u0131k Eksik", titleFailMsg: "Net bir ba\u015fl\u0131k hikayeyi tan\u0131mlamaya yard\u0131mc\u0131 olur.",
+            formatPass: "Standart Format", formatPassMsg: "Standart \u015fablona uyuyor.",
+            formatFail: "Hatal\u0131 Format", formatFailMsg: "\u015eunu deneyin: '[Rol] Olarak, [\u0130stek] \u0130stiyorum, B\u00f6ylece [Fayda]'.",
+            acPass: "Kabul Kriterleri Bulundu", acPassMsg: "A\u00e7\u0131k bir Kabul Kriterleri b\u00f6l\u00fcm\u00fc tespit edildi.",
+            acFail: "Kabul Kriterleri Eksik", acFailMsg: "'Kabul Kriterleri' b\u00f6l\u00fcm\u00fc bulunamad\u0131.",
+            acDetailed: "Detayl\u0131 Kriterler",
+            acFoundItems: "{0} madde bulundu.",
+            acGherkin: "Gherkin S\u00f6zdizimi", acGherkinMsg: "Davran\u0131\u015f Odakl\u0131 Geli\u015ftirme (BDD) stili kullan\u0131l\u0131yor.",
+            acSparse: "Seyrek Kriterler", acSparseMsg: "\u00c7ok az kabul kriteri bulundu.",
+            acUnhappy: "Mutsuz Yol", acUnhappyMsg: "Net madde i\u015faretleri tespit edilemedi.",
+            lenShort: "\u00c7ok K\u0131sa", lenShortMsg: "Hikaye haz\u0131r olmak i\u00e7in \u00e7ok k\u0131sa g\u00f6r\u00fcn\u00fcor.",
+            lenLong: "\u00c7ok Uzun", lenLongMsg: "Hikaye \u00e7ok karma\u015f\u0131k olabilir. B\u00f6lmeyi d\u00fc\u015f\u00fcn\u00fcn.",
+            lenGood: "\u0130yi Uzunluk", lenGoodMsg: "Hikaye uzunlu\u011fu makul.",
+            personaFail: "Mu\u011flak Persona", personaFailMsg: "'Kullan\u0131c\u0131' gibi genel personalardan ka\u00e7\u0131n\u0131n.",
+            personaPass: "Belirgin Persona", personaPassMsg: "Belirgin bir persona kulland\u0131\u011f\u0131n\u0131z i\u00e7in tebrikler.",
+            valueFail: "De\u011fer Eksik", valueFailMsg: "'B\u00f6ylece' ifadesi \u00e7ok \u00f6nemlidir.",
+            valueStrong: "G\u00fc\u00e7l\u00fc \u0130\u015f De\u011feri",
+            valueWeak: "Zay\u0131f De\u011fer", valueWeakMsg: "De\u011fer ifadesi \u00e7ok mu\u011flak.",
+            valueGeneric: "Genel De\u011fer", valueGenericMsg: "De\u011fer ifadesi mevcut ama daha g\u00fc\u00e7l\u00fc olabilir."
         },
         ui: {
-            titleSuffix_GK: "Bekçisi",
-            titleSuffix_Coach: "Koçu",
-            subtitle: "Çift Modlu Hazır Tanımı (DoR) Doğrulaması.",
+            titleSuffix_GK: "Bek\u00e7isi",
+            titleSuffix_Coach: "Ko\u00e7u",
+            subtitle: "\u00c7ift Modlu Haz\u0131r Tan\u0131m\u0131 (DoR) Do\u011frulamas\u0131.",
 
-            labelTitle: "Hikaye Başlığı", phTitle: "örn., Google ile Giriş Yapma",
-            labelContent: "Hikaye Tanımı ve Kriterler",
-            labelAC: "(Format: Böylece, KK, Bağımlılıklar, Tahmin)",
-            phContent: "[Rol] Olarak, [İstek] İstiyorum, Böylece [Fayda]...\\n\\nKabul Kriterleri:\\n- Kriter 1\\n- Kriter 2\\n\\nBağımlılıklar:\\n- Yok\\n\\nTahmin:\\n- 3 Puan",
+            labelTitle: "Hikaye Ba\u015fl\u0131\u011f\u0131", phTitle: "\u00d6rn., Google ile Giri\u015f Yapma",
+            labelContent: "Hikaye Tan\u0131m\u0131 ve Kriterler",
+            labelAC: "(Format: B\u00f6ylece, KK, Ba\u011f\u0131ml\u0131l\u0131klar, Tahmin)",
+            phContent: "[Rol] Olarak, [\u0130stek] \u0130stiyorum, B\u00f6ylece [Fayda]...\\n\\nKabul Kriterleri:\\n- Kriter 1\\n- Kriter 2\\n\\nBa\u011f\u0131ml\u0131l\u0131klar:\\n- Yok\\n\\nTahmin:\\n- 3 Puan",
 
             btnAnalyze: "Analiz Et",
-            btnDemo: "Örnek Yükle",
+            btnDemo: "\u00d6rnek Y\u00fckle",
             btnClear: "Temizle",
-            btnJira: "Jira'ya Kopyala \u{1F4CB}", btnJiraCopied: "Kopyalandı! \u{2705}",
-            btnFixSeals: "Mühürleri Onar \u{1F6D1}",
+            btnJira: "Jira'ya Kopyala \u{1F4CB}", btnJiraCopied: "Kopyaland\u0131! \u{2705}",
+            btnFixSeals: "M\u00fchrleri Onar \u{1F6D1}",
 
-            stampPass: "DÖKÜMHANE İÇİN HAZIR",
-            stampFail: "REDDEDİLDİ",
+            stampPass: "D\u00d6K\u00dcMHANE \u0130\u00c7\u0130N HAZIR",
+            stampFail: "REDDED\u0130LD\u0130",
 
-            checkRefinement: "Refinement Yapıldı?",
-            checkAlignment: "Bağımlılık Hizalandı?",
+            checkRefinement: "Refinement Yap\u0131ld\u0131?",
+            checkAlignment: "Ba\u011f\u0131ml\u0131l\u0131k Hizaland\u0131?",
 
-            labelScore: "DoR Puanı",
-            catCLARITY: "Netlik", catTESTABILITY: "Test Edilebilirlik", catVALUE: "Değer",
+            labelScore: "DoR Puan\u0131",
+            catCLARITY: "Netlik", catTESTABILITY: "Test Edilebilirlik", catVALUE: "De\u011fer",
 
-            headerCriteria: "6 Mühür",
-            refSeal0Title: "Kimlik", refSeal0Desc: "Başlık",
-            refSeal1Title: "Değer", refSeal1Desc: "Böylece...",
+            headerCriteria: "6 M\u00fch\u00fcr",
+            refSeal0Title: "Kimlik", refSeal0Desc: "Ba\u015fl\u0131k",
+            refSeal1Title: "De\u011fer", refSeal1Desc: "B\u00f6ylece...",
             refSeal2Title: "Zafer", refSeal2Desc: "3+ KK",
             refSeal3Title: "Arazi", refSeal3Desc: "Linkler",
             refSeal4Title: "Maliyet", refSeal4Desc: "Puan",
-            refSeal5Title: "Kanıt", refSeal5Desc: "Belge",
+            refSeal5Title: "Kan\u0131t", refSeal5Desc: "Belge",
 
             modeLabel: "Mod:",
-            modeGK: "\u{1F4AA}\u{FE0F} Güç",
-            modeCoach: "\u{1F9E0}\u{FE0F} Koç",
+            modeGK: "\u{1F4AA}\u{FE0F} G\u00fc\u00e7",
+            modeCoach: "\u{1F9E0}\u{FE0F} Ko\u00e7",
+
+            // Value Type Options
+            labelValueType: "Stratejik De\u011fer",
+            optSelectValue: "De\u011fer T\u00fcr\u00fc Se\u00e7...",
+            type_innovation: "\u{1F680} \u0130novasyon / B\u00fcy\u00fcme",
+            type_retention: "\u{1F6E1}\u{FE0F} Koruma / D\u00fczeltme",
+            type_compliance: "\u{2696}\u{FE0F} Uyumluluk / Zorunlu",
+            type_efficiency: "\u{26A1} Verimlilik / Tasarruf",
 
             // History
             btnUndo: "Geri Al \u{23EA}"

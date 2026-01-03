@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    STRATEGY: COGNITIVE COACH (Weighted Scoring)
    ========================================================================== */
 class CognitiveCoach {
@@ -85,7 +85,7 @@ class CognitiveCoach {
         const matches = content.match(pat.listItems);
         const hasGherkin = pat.gherkin.test(content);
         let acQRes;
-        if (matches && matches.length >= 3) acQRes = { pass: true, title: msg.acDetailed, message: `Found ${matches.length} items.` };
+        if (matches && matches.length >= 3) acQRes = { pass: true, title: msg.acDetailed, message: msg.acFoundItems.replace('{0}', matches.length) };
         else if (hasGherkin) acQRes = { pass: true, title: msg.acGherkin, message: msg.acGherkinMsg };
         else if (matches && matches.length > 0) acQRes = { pass: false, partial: 0.5, title: msg.acSparse, message: msg.acSparseMsg };
         else acQRes = { pass: false, title: msg.acUnhappy, message: msg.acUnhappyMsg };
